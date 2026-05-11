@@ -2013,7 +2013,7 @@
     if (target) {
       target.classList.add('active');
       mainEl.classList.add('is-detail');
-      history.replaceState(null, '', '#' + pageId);
+      history.pushState({ detailPage: pageId }, '', '#' + pageId);
       if (PAGE_TITLES[pageId]) document.title = PAGE_TITLES[pageId];
       window.scrollTo({ top: 0, behavior: 'instant' });
     }
@@ -2031,6 +2031,21 @@
     var el = document.getElementById(targetId);
     if (el) el.scrollIntoView({ behavior: 'instant' });
   }
+
+  /* ── Browser back/forward button support ── */
+  window.addEventListener('popstate', function (e) {
+    if (mainEl.classList.contains('is-detail')) {
+      /* Back was pressed while on a detail page — close it */
+      document.querySelectorAll('.page--sub').forEach(function (p) { p.classList.remove('active'); });
+      mainEl.classList.remove('is-detail');
+      document.title = BASE_TITLE + ' — Senior UX Researcher';
+      var el = document.getElementById('page-portfolio');
+      if (el) el.scrollIntoView({ behavior: 'instant' });
+    } else if (e.state && e.state.detailPage) {
+      /* Forward was pressed back into a detail page */
+      openDetail(e.state.detailPage);
+    }
+  });
 
   /* ── Nav card clicks ── */
   document.querySelectorAll('.nav-card[data-page]').forEach(function (card) {
