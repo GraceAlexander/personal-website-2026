@@ -1889,29 +1889,7 @@
   });
 
   /* ── Mouse + touch tracking ── */
-  /* ── Mouse + touch tracking ── */
-  /* cgaLastTouchEnd guards mousemove so synthetic post-tap mouse events
-     (fired ~300ms after touchend by the browser) don't re-scatter the dots */
-  var cgaLastTouchEnd = 0;
-  canvas.addEventListener('mousemove', function (e) {
-    if (Date.now() - cgaLastTouchEnd < 500) return;
-    var r = canvas.getBoundingClientRect();
-    mousePos.x = e.clientX - r.left;
-    mousePos.y = e.clientY - r.top;
-  });
-  canvas.addEventListener('mouseleave', function () {
-    mousePos.x = mousePos.y = 99999;
-  });
-  canvas.addEventListener('touchmove', function (e) {
-    e.preventDefault();
-    var r = canvas.getBoundingClientRect();
-    mousePos.x = e.touches[0].clientX - r.left;
-    mousePos.y = e.touches[0].clientY - r.top;
-  }, { passive: false });
-  canvas.addEventListener('touchend', function () {
-    cgaLastTouchEnd = Date.now();
-    mousePos.x = mousePos.y = 99999;
-  });
+  /* CGA logo is display-only — no mouse/touch interaction */
 
   /*
    * Physics — same model as original interaction.js:
