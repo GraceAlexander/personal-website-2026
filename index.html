@@ -1889,7 +1889,9 @@
   });
 
   /* ── Mouse + touch tracking ── */
+  var cgaLastTouchEnd = 0;
   canvas.addEventListener('mousemove', function (e) {
+    if (Date.now() - cgaLastTouchEnd < 500) return; /* ignore synthetic post-tap mouse events */
     var r = canvas.getBoundingClientRect();
     mousePos.x = e.clientX - r.left;
     mousePos.y = e.clientY - r.top;
@@ -1897,6 +1899,12 @@
   canvas.addEventListener('mouseleave', function () {
     mousePos.x = mousePos.y = 99999;
   });
+  canvas.addEventListener('touchstart', function (e) {
+    e.preventDefault(); /* stops synthetic mouse events firing after touch */
+    var r = canvas.getBoundingClientRect();
+    mousePos.x = e.touches[0].clientX - r.left;
+    mousePos.y = e.touches[0].clientY - r.top;
+  }, { passive: false });
   canvas.addEventListener('touchmove', function (e) {
     e.preventDefault();
     var r = canvas.getBoundingClientRect();
@@ -1904,6 +1912,7 @@
     mousePos.y = e.touches[0].clientY - r.top;
   }, { passive: false });
   canvas.addEventListener('touchend', function () {
+    cgaLastTouchEnd = Date.now();
     mousePos.x = mousePos.y = 99999;
   });
 
@@ -2393,7 +2402,11 @@ function makeGraceAnim(graceCanvas) {
     return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
   }
 
-  graceCanvas.addEventListener('mousemove', function (evt) { mousePos = getCanvasMousePos(evt); });
+  var graceLastTouchEnd = 0;
+  graceCanvas.addEventListener('mousemove', function (evt) {
+    if (Date.now() - graceLastTouchEnd < 500) return; /* ignore synthetic post-tap mouse events */
+    mousePos = getCanvasMousePos(evt);
+  });
   graceCanvas.addEventListener('mouseout', function () { mousePos = { x: 9999, y: 9999 }; });
   graceCanvas.addEventListener('touchstart', function (evt) {
     evt.preventDefault(); /* stops synthetic mouse events firing after touch */
@@ -2405,7 +2418,10 @@ function makeGraceAnim(graceCanvas) {
     var rect = graceCanvas.getBoundingClientRect();
     mousePos = { x: evt.touches[0].clientX - rect.left, y: evt.touches[0].clientY - rect.top };
   }, { passive: false });
-  graceCanvas.addEventListener('touchend', function () { mousePos = { x: 9999, y: 9999 }; });
+  graceCanvas.addEventListener('touchend', function () {
+    graceLastTouchEnd = Date.now();
+    mousePos = { x: 9999, y: 9999 };
+  });
 
   initBalls();
 
