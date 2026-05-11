@@ -1714,16 +1714,16 @@
       <div class="about-col-right">
         <div class="ceramics-preview-grid ceramics-grid-2x2">
           <div class="ceramics-preview-cell">
-            <img src="images/ceramics1.jpg" alt="Grace Alexander throwing a pot on the wheel" loading="lazy">
+            <img src="images/ceramics1.JPG" alt="Grace Alexander throwing a pot on the wheel" loading="lazy">
           </div>
           <div class="ceramics-preview-cell">
-            <img src="images/ceramics2.jpg" alt="Handmade ceramic teapot and mug set" loading="lazy">
+            <img src="images/ceramics2.JPG" alt="Handmade ceramic teapot and mug set" loading="lazy">
           </div>
           <div class="ceramics-preview-cell">
-            <img src="images/ceramics3.jpg" alt="Handmade ceramic citrus juicer" loading="lazy">
+            <img src="images/ceramics3.JPG" alt="Handmade ceramic citrus juicer" loading="lazy">
           </div>
           <div class="ceramics-preview-cell">
-            <img src="images/ceramics4.jpg" alt="Handmade ceramic plant pot with leafy plant" loading="lazy">
+            <img src="images/ceramics4.JPG" alt="Handmade ceramic plant pot with leafy plant" loading="lazy">
           </div>
         </div>
       </div>
@@ -2380,6 +2380,11 @@ function makeGraceAnim(graceCanvas) {
 
   graceCanvas.addEventListener('mousemove', function (evt) { mousePos = getCanvasMousePos(evt); });
   graceCanvas.addEventListener('mouseout', function () { mousePos = { x: 9999, y: 9999 }; });
+  graceCanvas.addEventListener('touchstart', function (evt) {
+    evt.preventDefault(); /* stops synthetic mouse events firing after touch */
+    var rect = graceCanvas.getBoundingClientRect();
+    mousePos = { x: evt.touches[0].clientX - rect.left, y: evt.touches[0].clientY - rect.top };
+  }, { passive: false });
   graceCanvas.addEventListener('touchmove', function (evt) {
     evt.preventDefault();
     var rect = graceCanvas.getBoundingClientRect();
