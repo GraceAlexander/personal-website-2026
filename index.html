@@ -1419,7 +1419,7 @@
               </div>
             </div>
             <div class="process-row-text">
-              <p class="process-row-desc">The solution came from a walk down Valencia Street. I saw a lamp with a wooden base in a furniture shop and recognized the approach. I took a wood carving class, learned to use the lathe, and switched the base to wood. Wood made it straightforward to install the lamp hardware and drill a clean hole for the cord — both things that had always been messy in ceramic.</p>
+              <p class="process-row-desc">While I'm most comfortable with the ceramic medium, it was time to try a new medium that could solve some of the issues a ceramic base introduced. I took a wood carving class, learned to use the lathe, and switched the base to wood. Wood made it straightforward to install the lamp hardware and drill a clean hole for the cord — both things that had always been messy in ceramic.</p>
               <p class="process-row-desc">The bigger gain was fit. With a wood base, I could bring the fully fired shade to the lathe and carve the groove to match it exactly — test-fitting the shade as I went, shaving a little more until it sat properly. The shrinkage problem went away.</p>
               <p class="process-row-desc">Slip casting for the shade, wood turning for the base — after two years of experimentation, I had a consistent, replicable method for making the light.</p>
               <div class="process-row-meta-block">
@@ -1889,9 +1889,12 @@
   });
 
   /* ── Mouse + touch tracking ── */
+  /* ── Mouse + touch tracking ── */
+  /* cgaLastTouchEnd guards mousemove so synthetic post-tap mouse events
+     (fired ~300ms after touchend by the browser) don't re-scatter the dots */
   var cgaLastTouchEnd = 0;
   canvas.addEventListener('mousemove', function (e) {
-    if (Date.now() - cgaLastTouchEnd < 500) return; /* ignore synthetic post-tap mouse events */
+    if (Date.now() - cgaLastTouchEnd < 500) return;
     var r = canvas.getBoundingClientRect();
     mousePos.x = e.clientX - r.left;
     mousePos.y = e.clientY - r.top;
@@ -1899,12 +1902,6 @@
   canvas.addEventListener('mouseleave', function () {
     mousePos.x = mousePos.y = 99999;
   });
-  canvas.addEventListener('touchstart', function (e) {
-    e.preventDefault(); /* stops synthetic mouse events firing after touch */
-    var r = canvas.getBoundingClientRect();
-    mousePos.x = e.touches[0].clientX - r.left;
-    mousePos.y = e.touches[0].clientY - r.top;
-  }, { passive: false });
   canvas.addEventListener('touchmove', function (e) {
     e.preventDefault();
     var r = canvas.getBoundingClientRect();
