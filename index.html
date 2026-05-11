@@ -1,0 +1,2592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Caroline Grace Alexander — Senior UX Researcher</title>
+  <meta name="description" content="Caroline Grace Alexander is a senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
+  <meta name="author" content="Caroline Grace Alexander">
+
+  <!-- Inline SVG favicon: small "cga" mark in the page text color -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23F6F5F1'/%3E%3Ctext x='16' y='21' font-family='Inter, sans-serif' font-size='11' font-weight='400' text-anchor='middle' fill='%231A1A18'%3Ecga%3C/text%3E%3C/svg%3E">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Caroline Grace Alexander — Senior UX Researcher">
+  <meta property="og:description" content="Senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
+  <meta property="og:image" content="images/grace.jpeg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Caroline Grace Alexander — Senior UX Researcher">
+  <meta name="twitter:description" content="Senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
+  <meta name="twitter:image" content="images/grace.jpeg">
+
+  <!-- Structured data: Person -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Caroline Grace Alexander",
+    "alternateName": "Grace Alexander",
+    "jobTitle": "Senior UX Researcher",
+    "worksFor": { "@type": "Organization", "name": "Apple" },
+    "address": { "@type": "PostalAddress", "addressLocality": "San Francisco", "addressRegion": "CA" },
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Northwestern University" },
+    "sameAs": ["https://www.linkedin.com/in/cgracealexander"]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Preload above-the-fold home portrait so it appears with the page -->
+  <link rel="preload" as="image" href="images/grace.jpeg">
+  <style>
+
+    /* ─── Reset ─── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    /* ─── Focus styles (keyboard navigation) ─── */
+    :focus { outline: none; }
+    :focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+      border-radius: 2px;
+    }
+    .nav-card:focus-visible,
+    .gallery-cell:focus-visible,
+    .home-about-card:focus-visible { outline-offset: 4px; }
+    #cgaCanvas:focus-visible { outline-offset: 6px; }
+
+    /* ─── Visually hidden (screen-reader only) ─── */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* ─── Skip link (keyboard) ─── */
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 8px;
+      padding: 8px 12px;
+      background: var(--text);
+      color: var(--bg);
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      letter-spacing: var(--ls-nav);
+      text-transform: uppercase;
+      text-decoration: none;
+      z-index: 200;
+      transition: top var(--t-fast);
+    }
+    .skip-link:focus { top: 8px; }
+
+    :root {
+      /* Color */
+      --bg:         #F6F5F1;
+      --surface:    #FFFFFF;
+      --text:       #1A1A18;
+      --text-muted: #888882;
+      --border:     #E2E1DC;
+
+      /* Layout */
+      --header-h:   48px;
+      --footer-h:   32px;
+      --page-pad-y: 36px;
+      --page-pad-x: 60px;
+
+      /* Type scale */
+      --fs-xs:      10px;
+      --fs-sm:      11px;
+      --fs-md:      12px;
+      --fs-lg:      13px;
+      --fs-base:    16px;
+      --fs-h:       15px;
+      --fs-title:   30px;
+
+      /* Spacing scale */
+      --gap-xs:     4px;
+      --gap-sm:     8px;
+      --gap-md:     14px;
+      --gap-lg:     20px;
+      --gap-xl:     28px;
+      --gap-2xl:    36px;
+
+      /* Letter-spacing for tracked-uppercase labels */
+      --ls-nav:     0.10em;   /* nav links, back link */
+      --ls-card:    0.09em;   /* card labels */
+      --ls-num:     0.12em;   /* numbered step labels */
+      --ls-label:   0.16em;   /* small section labels */
+
+      /* Image treatments */
+      --filter-portrait: grayscale(100%);
+      --filter-project:  brightness(1.06) contrast(1.10);
+
+      /* Motion */
+      --t-fast:     0.2s;
+      --t-med:      0.38s;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: var(--fs-base);
+      font-weight: 300;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+
+    /* ─── Header ─── */
+    header {
+      position: sticky;
+      top: 0;
+      height: var(--header-h);
+      display: flex;
+      align-items: center;
+      padding: 0 44px;
+      background: var(--bg);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+    }
+
+    #cgaCanvas {
+      display: block;
+      cursor: pointer;
+      transition: opacity var(--t-fast);
+    }
+    #cgaCanvas:hover { opacity: 0.7; }
+
+    nav {
+      margin-left: auto;
+      display: flex;
+      gap: var(--gap-xl);
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      letter-spacing: var(--ls-nav);
+      text-transform: uppercase;
+      position: relative;
+      transition: color var(--t-fast);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0; right: 0;
+      height: 1px;
+      background: var(--text);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.22s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active        { color: var(--text); }
+    .nav-link:hover::after,
+    .nav-link.active::after { transform: scaleX(1); }
+
+
+    /* ─── Main / pages ─── */
+    main {
+      flex: 1 0 auto;
+      position: relative;
+    }
+
+    .page {
+      display: flex;
+      flex-direction: column;
+      padding: var(--page-pad-y) var(--page-pad-x);
+      gap: var(--gap-2xl);
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      box-sizing: border-box;
+      scroll-margin-top: var(--header-h);
+    }
+
+    /* Visual divider between scroll sections (not home) */
+    #page-portfolio,
+    #page-about,
+    #page-contact { border-top: 1px solid var(--border); }
+
+    /* Sub-pages (detail views) — hidden until a card is clicked */
+    .page--sub { display: none; }
+    .page--sub.active { display: flex; }
+
+    /* When a detail view is open, hide the scroll sections */
+    main.is-detail .page:not(.page--sub) { display: none !important; }
+
+
+    /* ─── Section label (matches nav tab names) ─── */
+    .section-label {
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+
+    /* ─── Top row: circle photo + intro text ─── */
+    .page-top {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      flex-shrink: 0;
+    }
+
+    /* ─── Full-screen hero (home page) ─── */
+    .page-hero {
+      min-height: calc(100vh - var(--header-h) - var(--page-pad-y) * 2);
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      column-gap: 50px;
+      align-items: start;
+      width: 100%;
+    }
+    .hero-photo-col { justify-self: end; }
+    .hero-content-col { grid-column: 2; }
+
+    /* Left column: portrait */
+    .hero-photo-col { flex-shrink: 0; justify-self: end; }
+    .hero-circle {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Right column: Hi I'm / Grace canvas / tagline */
+    .hero-content-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      flex-shrink: 0;
+    }
+    .hero-hi {
+      font-size: 28px;
+      font-weight: 300;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+    #graceCanvas {
+      flex-shrink: 0;
+      opacity: 0.85;
+      display: block;
+    }
+    .hero-tagline {
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text-muted);
+      text-align: center;
+      max-width: 460px;
+      line-height: 1.8;
+    }
+
+    /* Circle photo */
+    .circle-photo {
+      width: 210px;
+      height: 210px;
+      border-radius: 50%;
+      background: var(--border);
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .circle-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: var(--filter-portrait);
+      display: block;
+    }
+
+    /* Project work circle photo (sub-pages: design, interviews, ai) */
+    .circle-photo.is-project img {
+      filter: var(--filter-project);
+    }
+
+    /* Placeholder gradient shown when no image loads */
+    .circle-photo.empty {
+      background: linear-gradient(140deg, #deded9 0%, #c5c4bf 100%);
+    }
+
+    .intro-title {
+      font-size: var(--fs-title);
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .intro-sub {
+      margin-top: 14px;
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 420px;
+    }
+
+    /* About-page bio: same width as intro-sub but body-text styling */
+    .bio-text {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.8;
+      max-width: 560px;
+    }
+    .bio-text strong {
+      color: #555552;
+      font-weight: 600;
+    }
+    .bio-row {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .bio-icon {
+      flex-shrink: 0;
+      margin-top: 3px;
+      color: var(--text-muted);
+    }
+
+
+    /* ─── Bottom section: cards / gallery ─── */
+    .page-bottom { flex-shrink: 0; }
+
+    .col-label {
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--gap-md);
+    }
+
+
+    /* ─── Portfolio card with description ─── */
+    .nav-card-footer--detailed {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .nav-card-footer--detailed .nav-card-footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+    .nav-card-desc {
+      font-size: var(--fs-sm);
+      font-weight: 300;
+      color: var(--text-muted);
+      line-height: 1.5;
+      text-transform: none;
+      letter-spacing: 0;
+      width: 100%;
+      text-align: left;
+    }
+
+
+    /* ─── Card grid (used on Home + Portfolio) ─── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-sm);
+    }
+
+    .nav-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      text-decoration: none;
+      color: var(--text);
+      transition: border-color var(--t-fast), background 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-card:hover {
+      border-color: var(--text);
+      background: var(--bg);
+    }
+
+    .nav-card-label {
+      font-size: var(--fs-md);
+      font-weight: 400;
+      letter-spacing: var(--ls-card);
+      text-transform: uppercase;
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-card-arrow {
+      font-size: var(--fs-base);
+      color: var(--text-muted);
+      transition: transform var(--t-fast);
+      position: relative;
+      z-index: 1;
+    }
+
+    .nav-card:hover .nav-card-arrow { transform: translateX(5px); }
+
+    /* image card variant — square with photo filling it */
+    .nav-card--image {
+      aspect-ratio: 1;
+      padding: 0;
+      align-items: flex-end;
+      align-self: start;
+      width: 100%;
+    }
+
+    .nav-card--image .nav-card-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: var(--filter-portrait);
+      transition: transform 0.4s ease;
+    }
+
+    /* Project work image cards (Portfolio sub-page covers) */
+    .nav-card--image.is-project .nav-card-img {
+      filter: var(--filter-project);
+    }
+
+    .nav-card--image:hover .nav-card-img { transform: scale(1.03); }
+
+    .nav-card--image .nav-card-footer {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      background: rgba(246,245,241,0.88);
+      box-sizing: border-box;
+      min-height: 96px;
+    }
+    .nav-card--image .nav-card-desc {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 2.6em;
+    }
+
+
+    /* ─── Ceramics: gallery grid ─── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-md);
+    }
+
+    .gallery-cell {
+      aspect-ratio: 1;
+      background: var(--border);
+      overflow: hidden;
+      /* button reset */
+      padding: 0;
+      border: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      display: block;
+      width: 100%;
+    }
+
+    .gallery-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: var(--filter-project);
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .gallery-cell:hover img,
+    .gallery-cell:focus-visible img { transform: scale(1.03); }
+
+
+
+    /* ─── Back link (sub-pages) ─── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--gap-xs);
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      letter-spacing: var(--ls-nav);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-bottom: calc(var(--gap-lg) * -1); /* pulls page-top up slightly */
+      transition: color var(--t-fast);
+    }
+    .back-link:hover { color: var(--text); }
+    .back-link::before { content: '←'; font-size: var(--fs-lg); }
+
+
+    /* ─── Project sub-page body ─── */
+    .project-body {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-2xl);
+    }
+
+    .project-section-label {
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .project-text {
+      font-size: var(--fs-base);
+      font-weight: 300;
+      line-height: 1.85;
+      color: var(--text);
+      max-width: 640px;
+    }
+    .project-text + .project-text { margin-top: 20px; }
+    .takeaway-wide .project-text { max-width: none; }
+    .page--full { max-width: none; }
+    .project-cols--about { grid-template-columns: 2fr auto; }
+
+
+    /* ─── Two-column project layout (description + sidebar) ─── */
+    .project-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+
+    /* ─── Numbered list (Interviews questions, AI loop steps) ─── */
+    .numbered-list {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0 var(--gap-lg);
+    }
+    .numbered-list-item {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 20px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: baseline;
+    }
+    .numbered-list-item:last-child { border-bottom: none; }
+    .numbered-list-num {
+      font-size: var(--fs-xs);
+      letter-spacing: var(--ls-num);
+      color: var(--text-muted);
+    }
+    .numbered-list-text {
+      font-size: var(--fs-lg);
+      font-weight: 300;
+      line-height: 1.7;
+    }
+    .numbered-list-text strong { font-weight: 400; }
+
+
+    /* ─── Process row (Lighting Design steps) ─── */
+    .process-row {
+      padding: 56px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-lg);
+    }
+    .process-row:last-child { border-bottom: none; }
+    .process-row-header {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      gap: var(--gap-sm);
+    }
+    .process-row-num {
+      font-size: var(--fs-xs);
+      letter-spacing: var(--ls-num);
+      color: var(--text-muted);
+      flex-shrink: 0;
+    }
+    .process-row-title {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+    }
+    .process-row-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-2xl);
+      align-items: start;
+    }
+    .process-row-img-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-sm);
+    }
+    .process-row-img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+    .process-row-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: var(--filter-project);
+      display: block;
+    }
+    .process-row-text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-md);
+    }
+    .process-row-desc {
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.85;
+    }
+    .process-row-meta-block {
+      margin-top: var(--gap-xs);
+    }
+    .process-row-meta-label {
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: var(--ls-label);
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: var(--gap-xs);
+    }
+    .process-row-meta {
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.85;
+    }
+
+
+    /* ─── Home page: multi-section layout ─── */
+    .home-sections {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-xl);
+    }
+    .home-section-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: var(--gap-md);
+    }
+
+    /* ─── Home about card ─── */
+    .home-about-card {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      padding: 28px 32px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      text-decoration: none;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color var(--t-fast), background 0.18s;
+    }
+    .home-about-card:hover {
+      border-color: var(--text);
+      background: var(--bg);
+    }
+    .home-about-photo {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .home-about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+      filter: var(--filter-portrait);
+      display: block;
+    }
+    .home-about-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .home-about-name {
+      font-size: var(--fs-h);
+      font-weight: 400;
+    }
+    .home-about-tagline {
+      font-size: var(--fs-sm);
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+    .home-about-arrow {
+      font-size: var(--fs-base);
+      color: var(--text-muted);
+      transition: transform var(--t-fast);
+    }
+    .home-about-card:hover .home-about-arrow { transform: translateX(5px); }
+
+
+    /* ─── Phone screenshot pair (AI Feedback Loop) ─── */
+    .process-row-phones {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-sm);
+      max-width: 504px;
+    }
+    .process-row-phone {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .process-row-phone img {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: var(--filter-project);
+    }
+
+
+    /* ─── About Me two-column layout ─── */
+    .about-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--gap-2xl);
+      align-items: start;
+    }
+    .about-col-left { display: flex; flex-direction: column; gap: 0; }
+    .ceramics-preview-grid.ceramics-grid-2x2 { grid-template-columns: 1fr 1fr; }
+
+    @media (max-width: 768px) {
+      .about-cols { grid-template-columns: 1fr; }
+    }
+
+
+    /* ─── Ceramics preview (About Me section) ─── */
+    .ceramics-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--gap-sm);
+    }
+    .ceramics-preview-cell {
+      aspect-ratio: 1;
+      overflow: hidden;
+      background: var(--border);
+    }
+    .ceramics-preview-cell img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: var(--filter-project);
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .ceramics-preview-cell:hover img { transform: scale(1.03); }
+
+
+    /* ─── Coming-soon panel ─── */
+    .coming-soon {
+      border: 1px solid var(--border);
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .coming-soon-title {
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text-muted);
+    }
+    .coming-soon-tag {
+      font-size: var(--fs-sm);
+      font-weight: 400;
+      letter-spacing: var(--ls-nav);
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+
+    /* ─── Contact buttons (About page) ─── */
+    .contact-buttons {
+      display: flex;
+      gap: var(--gap-md);
+    }
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text);
+      text-decoration: none;
+      transition: background var(--t-fast), color var(--t-fast);
+      cursor: pointer;
+    }
+    .contact-btn:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
+    .contact-card-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--text-muted);
+      transition: color var(--t-fast);
+      cursor: pointer;
+    }
+    .contact-card-link:hover { color: var(--text); }
+    .contact-card-link-text {
+      font-size: var(--fs-lg);
+      font-weight: 300;
+    }
+    .contact-card-link-arrow { font-size: var(--fs-sm); }
+
+
+    /* ─── Lightbox (ceramics gallery) ─── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(26, 26, 24, 0.95);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+      padding: 80px;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      filter: var(--filter-project);
+      display: block;
+    }
+    .lightbox-control,
+    .lightbox-close {
+      position: absolute;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font: inherit;
+      transition: background var(--t-fast);
+    }
+    .lightbox-control:hover,
+    .lightbox-close:hover { background: rgba(255,255,255,0.18); }
+    .lightbox-control:focus-visible,
+    .lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+    .lightbox-control {
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .lightbox-prev { left: 24px; }
+    .lightbox-next { right: 24px; }
+    .lightbox-close {
+      top: 24px;
+      right: 24px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+    }
+    .lightbox-counter {
+      position: absolute;
+      top: 32px;
+      left: 28px;
+      color: rgba(255,255,255,0.7);
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: var(--ls-num);
+      text-transform: uppercase;
+    }
+    @media (max-width: 768px) {
+      .lightbox { padding: 60px 16px; }
+      .lightbox-prev { left: 8px; }
+      .lightbox-next { right: 8px; }
+    }
+
+
+    /* ─── Footer ─── */
+    footer {
+      flex-shrink: 0;
+      height: var(--footer-h);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--gap-xs);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+    }
+    .footer-text {
+      font-size: var(--fs-xs);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+
+    /* ─── Tablet (769px–1024px) ─── */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      :root {
+        --page-pad-x: 40px;
+        --page-pad-y: 40px;
+      }
+
+      .hero-inner {
+        grid-template-columns: auto 1fr;
+        column-gap: 32px;
+      }
+      .hero-photo-col { grid-column: 1; }
+      .hero-content-col { grid-column: 2; align-items: flex-start; }
+      .hero-circle { width: 220px; height: 220px; }
+
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .about-cols { gap: var(--gap-xl); }
+    }
+
+    /* ─── Mobile (≤768px) ─── */
+    @media (max-width: 768px) {
+      :root {
+        --page-pad-y: 32px;
+        --page-pad-x: 24px;
+        --header-h:   56px;
+      }
+
+      header { padding: 0 24px; }
+
+      nav { gap: 20px; }
+
+      .nav-link { font-size: var(--fs-xs); }
+
+      .page { gap: var(--gap-xl); }
+
+      .page-top {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--gap-lg);
+      }
+
+      .page-hero {
+        min-height: auto;
+        padding-top: var(--gap-xl);
+      }
+      .hero-inner {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+        row-gap: var(--gap-lg);
+      }
+      .hero-photo-col { justify-self: center; grid-column: 1; }
+      .hero-content-col { grid-column: 1; gap: 14px; align-items: center; }
+      .hero-circle { width: 160px; height: 160px; }
+      .hero-hi { font-size: 22px; }
+      #graceCanvas { max-width: 100%; }
+      .hero-tagline { max-width: 100%; text-align: center; }
+
+      .circle-photo {
+        width: 140px;
+        height: 140px;
+      }
+
+      .intro-title {
+        font-size: 24px;
+      }
+
+      /* Drop hard line breaks in titles on mobile */
+      .intro-title br { display: none; }
+
+      .intro-sub,
+      .bio-text {
+        max-width: 100%;
+      }
+
+      .card-grid,
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: var(--gap-sm);
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-card--image { aspect-ratio: 16 / 10; }
+
+      .project-cols {
+        grid-template-columns: 1fr;
+        gap: var(--gap-2xl);
+      }
+      .project-cols--about {
+        grid-template-columns: 1fr;
+      }
+
+      .process-row {
+        padding: 36px 0;
+        gap: var(--gap-md);
+      }
+      .process-row-body {
+        grid-template-columns: 1fr;
+        gap: var(--gap-md);
+      }
+      .process-row-text { gap: var(--gap-md); }
+      .process-row-title { font-size: 18px; }
+
+      .coming-soon {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--gap-md);
+        padding: 24px 28px;
+      }
+
+      .contact-card {
+        min-width: 0;
+        width: 100%;
+      }
+
+      /* Bridge: shorter on mobile */
+      #bridge-container { height: 200px; }
+
+      /* Contact buttons: wrap gracefully */
+      .contact-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      /* Nav: tighten on very small screens */
+      @media (max-width: 380px) {
+        nav { gap: 12px; }
+        .nav-link { font-size: 9px; }
+        header { padding: 0 16px; }
+        :root { --page-pad-x: 16px; }
+      }
+    }
+
+
+    /* ─── Print stylesheet ─── */
+    @media print {
+      :root {
+        --bg:         #ffffff;
+        --surface:    #ffffff;
+        --border:     #cccccc;
+        --text:       #000000;
+        --text-muted: #555555;
+      }
+      html, body {
+        background: #fff;
+        color: #000;
+        font-size: 11pt;
+      }
+      .skip-link,
+      header,
+      footer,
+      nav,
+      .back-link,
+      .nav-card-arrow,
+      .home-about-arrow,
+      .contact-card-link-arrow,
+      #cgaCanvas { display: none !important; }
+
+      /* Force every page visible so the printout includes everything */
+      .page { display: flex !important; page-break-before: always; }
+      .page:first-of-type { page-break-before: auto; }
+
+      a { color: #000; text-decoration: none; }
+      a[href^="http"]::after,
+      a[href^="mailto"]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        color: #555;
+      }
+      img { filter: none !important; max-width: 100%; height: auto; page-break-inside: avoid; }
+      .nav-card,
+      .home-about-card,
+      .gallery-cell { border-color: #ccc; }
+      .process-row,
+      .coming-soon { page-break-inside: avoid; }
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
+    }
+
+  </style>
+</head>
+<body>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+═══════════════════════════════════════ -->
+<header>
+  <canvas id="cgaCanvas" role="button" tabindex="0" aria-label="Home" title="Home"></canvas>
+  <nav aria-label="Primary">
+    <a href="#page-portfolio" class="nav-link">Portfolio</a>
+    <a href="#page-about" class="nav-link">About Me</a>
+    <a href="#page-contact" class="nav-link">Contact</a>
+  </nav>
+</header>
+
+
+<!-- ═══════════════════════════════════════
+     PAGES
+═══════════════════════════════════════ -->
+<main id="main-content">
+
+  <!-- ── HOME ── -->
+  <section class="page page--full" id="page-home">
+
+    <div class="page-hero">
+      <div class="hero-inner">
+
+        <!-- Left: portrait -->
+        <div class="hero-photo-col">
+          <div class="circle-photo hero-circle">
+            <img src="images/grace.jpeg" alt="Grace Alexander"
+                 style="object-position: 100% 100%; transform: scale(1.5); transform-origin: 100% 100%;"
+                 onerror="this.parentElement.classList.add('empty'); this.remove()">
+          </div>
+        </div>
+
+        <!-- Right: Hi I'm / Grace particles / tagline -->
+        <div class="hero-content-col">
+          <p class="hero-hi">Hi I'm</p>
+          <canvas id="graceCanvas" width="450" height="200" aria-hidden="true"></canvas>
+          <span class="sr-only">Grace</span>
+          <p class="hero-tagline">I'm a senior user researcher based in San Francisco. I love being creative and spending time outdoors.</p>
+        </div>
+
+      </div>
+    </div>
+
+
+  </section>
+
+
+  <!-- ── PORTFOLIO ── -->
+  <section class="page page--full" id="page-portfolio">
+
+    <p class="section-label">Portfolio</p>
+
+    <div class="intro-text">
+      <h2 class="intro-title">I'm a Senior UX Researcher at Apple.</h2>
+      <p class="intro-sub">
+        I focus on mixed-methods research, with the goal of grounding product decisions in real user insight. These projects are personal work that reflect how I think and create outside of Apple.
+</p>
+    </div>
+
+    <div class="page-bottom">
+      <div class="card-grid">
+        <a class="nav-card nav-card--image is-project" href="#" data-page="ai" style="background: #fff;">
+          <img class="nav-card-img" src="images/ai_feedback_loop.JPG" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design"
+               style="object-fit: contain; object-position: center center;"
+               onerror="this.parentElement.classList.remove('nav-card--image')">
+          <div class="nav-card-footer nav-card-footer--detailed">
+            <div class="nav-card-footer-row">
+              <span class="nav-card-label">AI Feedback Loop</span>
+              <span class="nav-card-arrow">→</span>
+            </div>
+            <p class="nav-card-desc">What happens when you take design, dev, and product out of the product lifecycle?</p>
+          </div>
+        </a>
+        <a class="nav-card nav-card--image is-project" href="#" data-page="interviews">
+          <img class="nav-card-img" src="images/conversations_w_women.jpg" alt="Interviews"
+               onerror="this.parentElement.classList.remove('nav-card--image')">
+          <div class="nav-card-footer nav-card-footer--detailed">
+            <div class="nav-card-footer-row">
+              <span class="nav-card-label">Research Interviews</span>
+              <span class="nav-card-arrow">→</span>
+            </div>
+            <p class="nav-card-desc">A zine exploring the everyday feelings we don't always talk about.</p>
+          </div>
+        </a>
+        <a class="nav-card nav-card--image is-project" href="#" data-page="design">
+          <img class="nav-card-img" src="images/light_design/final.jpeg" alt="Lamp with a wood base and translucent porcelain shade"
+               onerror="this.parentElement.classList.remove('nav-card--image')">
+          <div class="nav-card-footer nav-card-footer--detailed">
+            <div class="nav-card-footer-row">
+              <span class="nav-card-label">Lighting Design</span>
+              <span class="nav-card-arrow">→</span>
+            </div>
+            <p class="nav-card-desc">A two-year project in translucent porcelain, in pursuit of a warm, atmospheric glow.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+
+
+
+  <!-- ── DESIGN ── -->
+  <section class="page page--sub" id="page-design">
+
+    <a class="back-link" href="#" data-page="portfolio">Portfolio</a>
+
+    <div class="page-top">
+      <div class="circle-photo is-project">
+        <img src="images/light_design/final.jpeg" alt="Lamp with a wood base and translucent porcelain shade"
+             style="object-position: center center;"
+             onerror="this.parentElement.classList.add('empty'); this.remove()">
+      </div>
+      <div class="intro-text">
+        <h2 class="intro-title">Lighting Design.</h2>
+        <p class="intro-sub">
+          A two-year project in translucent porcelain, in pursuit of a warm, atmospheric glow.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-body">
+
+      <div>
+        <p class="project-section-label">About the project</p>
+        <p class="project-text">
+          I was living in an old San Francisco apartment with warm, flattering light — most of it coming through frosted glass fixtures and incandescent bulbs. I wanted to recreate that quality of light — that warm, atmospheric glow — with a ceramic light.
+        </p>
+        <p class="project-text">
+          I'd heard that porcelain, thrown thin enough, can be translucent. That became the starting point: two years of making, testing, and iterating toward a ceramic light cover that glows.
+        </p>
+      </div>
+
+      <div class="process-rows">
+
+        <div class="process-row">
+          <div class="process-row-header">
+            <span class="process-row-num">01</span>
+            <h3 class="process-row-title">Prove the Concept</h3>
+          </div>
+          <div class="process-row-body">
+            <div class="process-row-img">
+              <img src="images/light_design/prototype0.jpeg" alt="Translucent porcelain cup placed on top of a light fixture — proof of concept">
+            </div>
+            <div class="process-row-text">
+              <p class="process-row-desc">The first question was whether porcelain could be thrown thin enough to let light through. I made a test piece, and it worked — the translucency was clear, and the concept held.</p>
+              <p class="process-row-desc">You can see here my test piece placed on top of a light fixture in my house.</p>
+              <div class="process-row-meta-block">
+                <p class="process-row-meta-label">Next steps</p>
+                <p class="process-row-meta">With the concept proven, I needed to design the full lamp — how the lighting component would fit inside, how the parts would connect, and how to make it a standalone object.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-row">
+          <div class="process-row-header">
+            <span class="process-row-num">02</span>
+            <h3 class="process-row-title">Develop a Plan</h3>
+          </div>
+          <div class="process-row-body">
+            <div class="process-row-img" style="aspect-ratio: auto; height: auto;">
+              <img src="images/light_design/plan.jpeg" alt="Develop a plan" style="height: auto; object-fit: unset;">
+            </div>
+            <div class="process-row-text">
+              <p class="process-row-desc">With the concept proven, I sketched out a plan. I needed to figure out how to fit the lighting component inside the piece, how the parts would connect, and how to make it sit flat on a surface. The goal was a fully standalone lamp — one self-contained object you could plug in and use.</p>
+              <div class="process-row-meta-block">
+                <p class="process-row-meta-label">Next steps</p>
+                <p class="process-row-meta">Build it and test it — see how close the reality was to the plan.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-row">
+          <div class="process-row-header">
+            <span class="process-row-num">03</span>
+            <h3 class="process-row-title">Initial Design</h3>
+          </div>
+          <div class="process-row-body">
+            <div class="process-row-img-pair">
+              <div class="process-row-img">
+                <img src="images/light_design/prototype1.jpeg" alt="Second prototype with translucent porcelain shade">
+              </div>
+              <div class="process-row-img">
+                <img src="images/light_design/prototype1_inside.jpeg" alt="Second prototype with shade removed">
+              </div>
+            </div>
+            <div class="process-row-text">
+              <p class="process-row-desc">The first version got the overall look right, but had real problems. The light fixture sat separately from the rest of the piece, the cord exit felt unresolved, and the components didn't come together as one. Only about one in every five shade attempts came out properly translucent.</p>
+              <div class="process-row-meta-block">
+                <p class="process-row-meta-label">Next steps</p>
+                <p class="process-row-meta">Improve the shade success rate and find a method for making it consistently. Integrate the components so the lamp reads as one unified object.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-row">
+          <div class="process-row-header">
+            <span class="process-row-num">04</span>
+            <h3 class="process-row-title">Iterate on the Shade</h3>
+          </div>
+          <div class="process-row-body">
+            <div class="process-row-img-pair">
+              <div class="process-row-img">
+                <img src="images/light_design/prototype2.jpeg" alt="Lamp with ceramic base and translucent ceramic shade">
+              </div>
+              <div class="process-row-img">
+                <img src="images/light_design/prototype2_inside.jpeg" alt="Inside the lamp with the light off and shade removed">
+              </div>
+            </div>
+            <div class="process-row-text">
+              <p class="process-row-desc">After trying hand building, carving, and other methods, I landed on slip casting. I threw the lampshade form on the wheel, made a plaster mold from it, and used the mold to cast extremely thin porcelain shells. I also took a slip casting class to learn the technique properly.</p>
+              <p class="process-row-desc">Traditionally, slip is left in a mold for 30–40 minutes to build up the walls. For these, I pulled it at five — well outside the standard parameters of the method, but the only way to get the walls thin enough to glow.</p>
+              <div class="process-row-meta-block">
+                <p class="process-row-meta-label">Next steps</p>
+                <p class="process-row-meta">Raw white porcelain looked right for the base, but getting it to fit the shade precisely was difficult. Clay shrinks about 15% during firing, and starts shrinking as soon as it begins to dry. The shade used a liquid slip clay while the base was thrown from a different porcelain, so they had different shrinkage rates and were always at different stages of dryness. Aligning the two consistently was a persistent problem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-row">
+          <div class="process-row-header">
+            <span class="process-row-num">05</span>
+            <h3 class="process-row-title">Iterate on the Base</h3>
+          </div>
+          <div class="process-row-body">
+            <div class="process-row-img-pair">
+              <div class="process-row-img">
+                <img src="images/light_design/prototype3.jpeg" alt="Lamp with a wood base and translucent porcelain shade">
+              </div>
+              <div class="process-row-img">
+                <img src="images/light_design/prototype3_inside.jpeg" alt="Wooden base carved out to fit the ceramic lampshade, with lighting fixture attached inside">
+              </div>
+            </div>
+            <div class="process-row-text">
+              <p class="process-row-desc">The solution came from a walk down Valencia Street. I saw a lamp with a wooden base in a furniture shop and recognized the approach. I took a wood carving class, learned to use the lathe, and switched the base to wood. Wood made it straightforward to install the lamp hardware and drill a clean hole for the cord — both things that had always been messy in ceramic.</p>
+              <p class="process-row-desc">The bigger gain was fit. With a wood base, I could bring the fully fired shade to the lathe and carve the groove to match it exactly — test-fitting the shade as I went, shaving a little more until it sat properly. The shrinkage problem went away.</p>
+              <p class="process-row-desc">Slip casting for the shade, wood turning for the base — after two years of experimentation, I had a consistent, replicable method for making the light.</p>
+              <div class="process-row-meta-block">
+                <p class="process-row-meta-label">Result</p>
+                <p class="process-row-meta">A standalone, plug-in lamp — one object, consistent to make, and the warm glow I'd set out to recreate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ── INTERVIEWS ── -->
+  <section class="page page--sub" id="page-interviews">
+
+    <a class="back-link" href="#" data-page="portfolio">Portfolio</a>
+
+    <div class="page-top">
+      <div class="circle-photo is-project">
+        <img src="images/conversations_w_women.jpg" alt="Conversations with Women — zine cover art"
+             style="object-position: center center;"
+             onerror="this.parentElement.classList.add('empty'); this.remove()">
+      </div>
+      <div class="intro-text">
+        <h2 class="intro-title">Conversations with Women.</h2>
+        <p class="intro-sub">
+          A zine exploring the everyday feelings we don't always talk about.
+        </p>
+      </div>
+    </div>
+
+    <div class="project-body">
+
+      <div class="project-cols">
+
+        <div>
+          <p class="project-section-label">About the project</p>
+          <p class="project-text">
+            I've always been curious about the feelings people carry through ordinary days — not the hardest moments, but the quiet, everyday ones that rarely get named out loud. This zine grew out of that curiosity.
+          </p>
+          <p class="project-text">
+            I took a zine-making class to learn the craft, designing and printing the cover art by hand. Then I set out to interview women — not about trauma or turning points, but about the rhythms of regular life. Every conversation followed the same five questions, starting with: <em>tell me about your day.</em>
+          </p>
+          <p class="project-text">
+            The goal was to make space for these everyday feelings and the conversations around them.
+          </p>
+          <p class="project-text">
+            Crafting the five questions took care. I wanted each one to be open enough that participants could take it anywhere — no specific emotions named, no examples offered that might anchor their thinking. The intent was to let each person fully describe their own experience, in their own words, without being steered toward what I expected to hear.
+          </p>
+          <p class="project-text">
+            After the first few interviews, I was surprised by the range of feelings people named — I'd expected more overlap with my own. The variety was a useful reminder of how differently we each experience the world.
+          </p>
+        </div>
+
+        <div>
+          <p class="project-section-label">The questions</p>
+          <div class="numbered-list">
+            <div class="numbered-list-item">
+              <span class="numbered-list-num">01</span>
+              <p class="numbered-list-text">Tell me about your day so far today — what's happened?</p>
+            </div>
+            <div class="numbered-list-item">
+              <span class="numbered-list-num">02</span>
+              <p class="numbered-list-text">Is there a feeling you've been feeling a lot recently?</p>
+            </div>
+            <div class="numbered-list-item">
+              <span class="numbered-list-num">03</span>
+              <p class="numbered-list-text">Tell me about a time recently when you felt that way.</p>
+            </div>
+            <div class="numbered-list-item">
+              <span class="numbered-list-num">04</span>
+              <p class="numbered-list-text">How do you feel about the role that feeling plays in your life?</p>
+            </div>
+            <div class="numbered-list-item">
+              <span class="numbered-list-num">05</span>
+              <p class="numbered-list-text">In the future, what do you want your relationship to that feeling to look like?</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="coming-soon">
+        <div>
+          <p class="project-section-label" style="margin-bottom: 6px;">The zine</p>
+          <p class="coming-soon-title">Full interviews coming soon.</p>
+        </div>
+        <span class="coming-soon-tag">Coming soon</span>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ── AI FEEDBACK LOOP ── -->
+  <section class="page page--sub" id="page-ai">
+
+    <a class="back-link" href="#" data-page="portfolio">Portfolio</a>
+
+    <div class="page-top">
+      <div class="circle-photo is-project">
+        <img src="images/ai_feedback_loop.JPG" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design"
+             style="object-position: center center;"
+             onerror="this.parentElement.classList.add('empty'); this.remove()">
+      </div>
+      <div class="intro-text">
+        <h2 class="intro-title">The AI Feedback Loop.</h2>
+        <p class="intro-sub">
+          What happens when you take design, dev, and product out of the product lifecycle?
+        </p>
+      </div>
+    </div>
+
+    <div class="project-body">
+
+      <div style="display: flex; flex-direction: column; gap: 24px;">
+
+        <div class="project-cols" style="align-items: start;">
+
+          <div>
+            <p class="project-section-label">The idea</p>
+            <p class="project-text">
+              This project explores what happens when AI and usability testing are connected in a closed loop with no designer or developer in the middle. The premise is simple: an AI generates a prototype, real users test it, and their feedback goes straight back into the AI to generate the next version.
+            </p>
+            <p class="project-text">
+              The interesting question isn't whether AI can design — it's what kind of design emerges when the only input is real user behavior, iterated on continuously and automatically.
+            </p>
+            <p class="project-text">
+              Tools like UserTesting.com already let you connect to users on demand. In a fully realized version of this loop, a design could go from prototype to tested to revised without a human decision point in between. And since most usability testing doesn't require specialized expertise, this could be an inexpensive way to iterate.
+            </p>
+            <p class="project-text">
+              To be clear: I believe humans should be in the loop with AI. This project is a deliberate experiment to see what happens when they're not.
+            </p>
+          </div>
+
+          <div>
+            <p class="project-section-label">The result</p>
+            <div class="process-row-phones">
+              <div class="process-row-phone">
+                <img src="images/ai_feedback_loop/final-home.png" alt="App home screen with a tree photo and two action buttons: Take a Photo and Choose from Library">
+              </div>
+              <div class="process-row-phone">
+                <img src="images/ai_feedback_loop/final-results.png" alt="App results screen identifying the tree as a White Oak with detailed information about the species">
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="takeaway-wide">
+          <p class="project-section-label">My takeaway</p>
+          <p class="project-text">It took more iterations than I expected to get to a decent-looking app. But, surprisingly, it did get there.</p>
+          <p class="project-text">That said, the designs Claude produced didn't always follow best practices or standard design patterns — it was optimizing for the feedback it received, not for what a skilled designer would know to do from the start.</p>
+          <p class="project-text">Claude also didn't prioritize findings the way I would when conducting research — it treated feedback from one user the same as feedback from three. A more experienced researcher would weight findings by how many users raised them. More specific instructions, a tighter prompt structure, or a more specific skill could help address this.</p>
+        </div>
+
+      </div>
+
+      <div>
+        <p class="project-section-label">The experiment</p>
+        <div class="process-rows">
+
+          <!-- Iteration 1 -->
+          <div class="process-row">
+            <div class="process-row-header">
+              <span class="process-row-num">01</span>
+              <h3 class="process-row-title">Iteration One</h3>
+            </div>
+            <div class="process-row-body">
+              <div class="process-row-phones">
+                <div class="process-row-phone">
+                  <img src="images/ai_feedback_loop/iter1-home.png" alt="Iteration 1 home screen — camera viewfinder UI with a question mark placeholder, a button to identify a tree, and the prompt 'point your camera at any tree or leaf'">
+                </div>
+                <div class="process-row-phone">
+                  <img src="images/ai_feedback_loop/iter1-results.png" alt="Iteration 1 results screen — tree identified as a White Oak, with an About section and a fun fact about the species">
+                </div>
+              </div>
+              <div class="process-row-text">
+                <div>
+                  <p class="process-row-meta-label">Research findings</p>
+                  <p class="process-row-desc">The core flow worked — users could identify a tree without friction. Three problems emerged: a "?" placeholder icon that everyone flagged as unfinished, a results page that didn't telegraph scrolling (one user never found the fun fact or the CTA), and a consistent ask for more depth — reference photos, tappable match cards, a habitat map.</p>
+                </div>
+                <div class="process-row-meta-block">
+                  <p class="process-row-meta-label">AI's recommendations</p>
+                  <p class="process-row-meta">Removed the redundant Recent strip from the home screen. Added a sticky "Identify Another Tree" button outside the scroll view. Made each match card expandable with a Wikipedia detail sheet. Linked the habitat card to an Apple Maps search.</p>
+                </div>
+                <div class="process-row-meta-block">
+                  <p class="process-row-meta-label">My take</p>
+                  <p class="process-row-meta">Three of the four recommendations were each supported by only one user — a real generalizability problem. The AI also missed the "?" icon entirely, despite all three users raising it independently. That's both a sampling problem and a prompt problem. I needed to tighten both.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Iteration 2 -->
+          <div class="process-row">
+            <div class="process-row-header">
+              <span class="process-row-num">02</span>
+              <h3 class="process-row-title">Iteration Two</h3>
+            </div>
+            <div class="process-row-body">
+              <div class="process-row-phones">
+                <div class="process-row-phone">
+                  <img src="images/ai_feedback_loop/iter2-home.png" alt="Iteration 2 home screen — camera viewfinder with a green circle placeholder, the prompt 'point your camera at any tree or leaf', a button to identify a tree, and a History button in the top right">
+                </div>
+                <div class="process-row-phone">
+                  <img src="images/ai_feedback_loop/iter2-results.png" alt="Iteration 2 results screen — top matches showing White Oak at 91% confidence, followed by Bur Oak and Chinkapin Oak, with an About section and an option to identify another tree">
+                </div>
+              </div>
+              <div class="process-row-text">
+                <div>
+                  <p class="process-row-meta-label">Research findings</p>
+                  <p class="process-row-desc">Results improved but the landing page was unanimously called "funny" or unpolished. The bigger issue: the green "Identify a Tree" button was so dominant that users interpreted the confirmation dialog as a continuation of the same step. They kept expecting to press the main button again rather than choose from the dialog.</p>
+                </div>
+                <div class="process-row-meta-block">
+                  <p class="process-row-meta-label">AI's recommendations</p>
+                  <p class="process-row-meta">Redesigned the landing page with a centered hero structure — app name and tagline at the top, illustration in the middle, buttons anchored at the bottom. Replaced the single CTA with two explicit buttons ("Take Photo" / "Choose from Library"), eliminating the dialog entirely. Added reference photos to expanded match cards. Removed confusing scroll-hint chevrons.</p>
+                </div>
+                <div class="process-row-meta-block">
+                  <p class="process-row-meta-label">My take</p>
+                  <p class="process-row-meta">The biggest visual leap of the three rounds. The landing page fix was the right call. But the AI was still overgeneralizing — several recommendations came from two users rather than three. The pattern-matching was improving but the threshold for what counted as a "finding" was still too low.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Iteration 3 -->
+          <div class="process-row">
+            <div class="process-row-header">
+              <span class="process-row-num">03</span>
+              <h3 class="process-row-title">Iteration Three</h3>
+            </div>
+            <div class="process-row-body">
+              <div class="process-row-phones">
+                <div class="process-row-phone">
+                  <img src="images/ai_feedback_loop/iter3-home.png" alt="Iteration 3 home screen — green circle placeholder, the tagline 'identify any tree instantly', two action buttons to take a photo or choose from library, and a History button in the top right">
+                </div>
+                <div class="process-row-phone">
+                  <img src="images/ai_feedback_loop/iter3-results.png" alt="Iteration 3 results screen — tree identified as White Oak at 91% confidence, with two other oak species as alternate matches, an About section, and a button to identify another tree">
+                </div>
+              </div>
+              <div class="process-row-text">
+                <div>
+                  <p class="process-row-meta-label">Research findings</p>
+                  <p class="process-row-desc">The identify flow and results screen stopped drawing complaints entirely — a meaningful improvement from round one. The one issue all three users raised independently, in almost identical terms: a black "?" box sitting on top of the green circle in the hero. The tree emoji wasn't rendering in the iOS simulator and was falling back to a placeholder. One rendering bug, otherwise working.</p>
+                </div>
+                <div class="process-row-meta-block">
+                  <p class="process-row-meta-label">AI's recommendations</p>
+                  <p class="process-row-meta">Replaced the emoji with an SF Symbol (tree.fill) for reliable rendering across all iOS devices. Nudged the fun fact text back from secondary grey to primary — the deprioritization from the previous round had gone slightly too far.</p>
+                </div>
+                <div class="process-row-meta-block">
+                  <p class="process-row-meta-label">My take</p>
+                  <p class="process-row-meta">Three rounds in, the loop had produced a working, coherent app. That surprised me. What it exposed clearly: AI is good at pattern-matching feedback into UI changes, but it consistently overgeneralizes from single data points and misses what users aren't saying. The loop may work — but having an initial design pass could save a lot of iterations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ── ABOUT ME ── -->
+  <section class="page page--full" id="page-about">
+
+    <p class="section-label">About Me</p>
+
+    <div class="about-cols">
+
+      <!-- Left: bio -->
+      <div class="about-col-left">
+        <h2 class="intro-title">I love to build beautiful, functional things.</h2>
+        <p class="intro-sub">I'm a UX researcher and designer with an engineering background.</p>
+        <div class="bio-text" style="margin-top: var(--gap-lg);">
+          <p><strong>At Northwestern, I studied Computer Science and Design.</strong><br>Within the CS curriculum, I focused on Human Computer Interaction and Machine Learning. I was a TA for 5 quarters across different CS classes. This taught me how to break down complex topics and explain them clearly, and gave me my first real experience in mentorship and building relationships through teaching.</p>
+          <p><strong>I started at Apple in a cross-functional rotational program.</strong><br>Across my rotations, I worked in product management, front-end development, and user research, which gave me a strong foundation for working across disciplines. From there, I grew into increasingly scoped research roles, leading research on Apple TV+ before building Apple Legal's research practice from the ground up.</p>
+          <p><strong>Outside of work, you'll likely find me at my ceramics studio.</strong><br>I also love backpacking, rock climbing, and exploring in the Sierras.</p>
+        </div>
+      </div>
+
+      <!-- Right: 2×2 ceramics grid -->
+      <div class="about-col-right">
+        <div class="ceramics-preview-grid ceramics-grid-2x2">
+          <div class="ceramics-preview-cell">
+            <img src="images/ceramics1.jpg" alt="Grace Alexander throwing a pot on the wheel" loading="lazy">
+          </div>
+          <div class="ceramics-preview-cell">
+            <img src="images/ceramics2.jpg" alt="Handmade ceramic teapot and mug set" loading="lazy">
+          </div>
+          <div class="ceramics-preview-cell">
+            <img src="images/ceramics3.jpg" alt="Handmade ceramic citrus juicer" loading="lazy">
+          </div>
+          <div class="ceramics-preview-cell">
+            <img src="images/ceramics4.jpg" alt="Handmade ceramic plant pot with leafy plant" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ── CONTACT ── -->
+  <section class="page page--full" id="page-contact" style="display: flex; flex-direction: column; gap: var(--gap-2xl); overflow: hidden;">
+
+    <!-- Content: top -->
+    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--gap-lg); padding-top: 48px;">
+      <h2 class="intro-title">Let's connect!</h2>
+      <p style="font-size: var(--fs-base); font-weight: 300; color: var(--text-muted); line-height: 1.7; margin: 0; max-width: 420px;">I'm always happy to connect with other UX researchers — I'm curious about what the research experience looks like across different companies and teams. Feel free to reach out!</p>
+      <div class="contact-buttons">
+        <a id="email-link" class="contact-btn" aria-label="Send email">
+          <span id="email-display">Email</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/cgracealexander" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="LinkedIn">
+          LinkedIn ↗
+        </a>
+        <a href="CarolineGraceAlexanderResume2026.pdf" download class="contact-btn" aria-label="Download resume">
+          Resume ↓
+        </a>
+      </div>
+    </div>
+
+    <!-- Bridge: full-width strip below -->
+    <div id="bridge-container" style="margin: 0 calc(-1 * var(--page-pad-x)); width: calc(100% + 2 * var(--page-pad-x)); overflow: hidden;">
+      <img src="images/ggb_background.png" alt="Golden Gate Bridge illustrated in dots" aria-hidden="true"
+           style="display: block; width: 100%; height: auto;">
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     LIGHTBOX (ceramics gallery)
+═══════════════════════════════════════ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Ceramics photo viewer">
+  <span class="lightbox-counter" id="lightbox-counter" aria-live="polite"></span>
+  <img class="lightbox-img" id="lightbox-img" alt="">
+  <button type="button" class="lightbox-control lightbox-prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
+  <button type="button" class="lightbox-control lightbox-next" id="lightbox-next" aria-label="Next photo">›</button>
+  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">×</button>
+</div>
+
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════ -->
+<script>
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
+  window.scrollTo(0, 0);
+</script>
+<script>
+(function () {
+  'use strict';
+
+
+  /* ─────────────────────────────────────────
+     CGA PARTICLE LOGO
+     Renders "CGA" in Inter (matching the body font) onto a hidden
+     canvas, samples the dark pixels, and uses those positions as
+     ball origins — so the dot shapes exactly trace the real letterforms.
+  ───────────────────────────────────────── */
+
+  var canvas   = document.getElementById('cgaCanvas');
+  var dpr      = window.devicePixelRatio || 1;
+  var CSS_H    = 34;
+  var CSS_W    = 0;   /* determined after font metrics are available */
+  var ctx = canvas.getContext('2d');
+
+  function Ball(x, y, color) {
+    this.x = this.origX = x;
+    this.y = this.origY = y;
+    this.vx = this.vy = 0;
+    this.color  = color;
+    this.radius = 1;
+  }
+
+  var balls    = [];
+  var mousePos = { x: 99999, y: 99999 };
+  var lastTime = Date.now();
+
+  /*
+   * Wait for Inter to finish loading, then:
+   *  1. Measure each glyph so we know how wide to make the canvas
+   *  2. Draw C, G, A onto an offscreen canvas in the same weight/size
+   *     used by the main page text
+   *  3. Walk every pixel — wherever alpha > threshold, spawn balls
+   *     with a small random jitter so they form a soft cloud
+   */
+  document.fonts.ready.then(function () {
+
+    var FONT    = "300 24px 'Inter', -apple-system, sans-serif";
+    var GAP     = 6;    /* px between letters */
+    var PAD     = 4;    /* left/right canvas padding */
+    var COPIES  = 1;    /* balls spawned per sampled pixel */
+    var JITTER  = 0.4;  /* px of random scatter around each pixel */
+    var ALPHA   = 20;   /* minimum alpha to count as "ink" */
+    var DOT     = 'rgba(26, 26, 24, 0.82)';
+
+    /* ── Measure glyphs ── */
+    var ruler = document.createElement('canvas').getContext('2d');
+    ruler.font = FONT;
+    var cW = ruler.measureText('C').width;
+    var gW = ruler.measureText('G').width;
+    var aW = ruler.measureText('A').width;
+
+    CSS_W = Math.ceil(PAD + cW + GAP + gW + GAP + aW + PAD);
+
+    /* ── Draw onto offscreen canvas ── */
+    var off    = document.createElement('canvas');
+    off.width  = CSS_W;
+    off.height = CSS_H;
+    var oc = off.getContext('2d');
+    oc.font         = FONT;
+    oc.fillStyle    = '#000';
+    oc.textBaseline = 'middle';
+
+    var cX = PAD;
+    var gX = cX + cW + GAP;
+    var aX = gX + gW + GAP;
+    oc.fillText('C', cX, CSS_H / 2);
+    oc.fillText('G', gX, CSS_H / 2);
+    oc.fillText('A', aX, CSS_H / 2);
+
+    /* ── Size the real canvas ── */
+    canvas.width  = CSS_W * dpr;
+    canvas.height = CSS_H * dpr;
+    canvas.style.width  = CSS_W + 'px';
+    canvas.style.height = CSS_H + 'px';
+    ctx.scale(dpr, dpr);
+
+    /* ── Sample pixels → balls ── */
+    var pixels = oc.getImageData(0, 0, CSS_W, CSS_H).data;
+    for (var y = 0; y < CSS_H; y++) {
+      for (var x = 0; x < CSS_W; x++) {
+        if (pixels[(y * CSS_W + x) * 4 + 3] > ALPHA) {
+          for (var k = 0; k < COPIES; k++) {
+            balls.push(new Ball(
+              x + (Math.random() * 2 - 1) * JITTER,
+              y + (Math.random() * 2 - 1) * JITTER,
+              DOT
+            ));
+          }
+        }
+      }
+    }
+
+    /* respect reduced-motion preference — draw once, skip loop */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      drawBalls();
+    } else {
+      loop();
+    }
+  });
+
+  /* ── Mouse + touch tracking ── */
+  canvas.addEventListener('mousemove', function (e) {
+    var r = canvas.getBoundingClientRect();
+    mousePos.x = e.clientX - r.left;
+    mousePos.y = e.clientY - r.top;
+  });
+  canvas.addEventListener('mouseleave', function () {
+    mousePos.x = mousePos.y = 99999;
+  });
+  canvas.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    var r = canvas.getBoundingClientRect();
+    mousePos.x = e.touches[0].clientX - r.left;
+    mousePos.y = e.touches[0].clientY - r.top;
+  }, { passive: false });
+  canvas.addEventListener('touchend', function () {
+    mousePos.x = mousePos.y = 99999;
+  });
+
+  /*
+   * Physics — same model as original interaction.js:
+   *   velocity multiplier of 4 is RESTORED (this is what makes
+   *   dots spring back — halving it also halved the restore force).
+   *   mouseK is kept small so the disturbance is slow and gentle.
+   *   Higher friction damps oscillation so dots settle cleanly.
+   */
+  function updateBalls(dt) {
+    var mouseK  = 0.08  * dt;
+    var springK = 0.004;   /* proportional restore — force scales with displacement */
+    var damping = 0.84;    /* multiply velocity each frame — exponential decay, no vibration */
+
+    for (var n = 0; n < balls.length; n++) {
+      var b = balls[n];
+
+      b.x += 4 * b.vx;
+      b.y += 4 * b.vy;
+
+      /* proportional spring — larger displacement = larger pull back */
+      b.vx += (b.origX - b.x) * springK;
+      b.vy += (b.origY - b.y) * springK;
+
+      /* mouse repulsion */
+      var dx   = b.x - mousePos.x;
+      var dy   = b.y - mousePos.y;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      var sum  = Math.abs(dx) + Math.abs(dy);
+      if (sum > 0 && dist > 0) {
+        var fx = (Math.abs(dx) / sum) * (1 / dist) * mouseK;
+        var fy = (Math.abs(dy) / sum) * (1 / dist) * mouseK;
+        b.vx += (dx > 0) ?  fx : -fx;
+        b.vy += (dy > 0) ?  fy : -fy;
+      }
+
+      /* multiplicative damping — smoothly kills velocity, no micro-oscillation */
+      b.vx *= damping;
+      b.vy *= damping;
+
+      var r = b.radius;
+      if (b.y > CSS_H - r) { b.y = CSS_H - r - 1; b.vy *= -1; }
+      if (b.y < r)         { b.y = r + 1;          b.vy *= -1; }
+      if (b.x > CSS_W - r) { b.x = CSS_W - r - 1; b.vx *= -1; }
+      if (b.x < r)         { b.x = r + 1;          b.vx *= -1; }
+    }
+  }
+
+  function drawBalls() {
+    if (!CSS_W) return;
+    ctx.clearRect(0, 0, CSS_W, CSS_H);
+    for (var n = 0; n < balls.length; n++) {
+      var b = balls[n];
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+      ctx.fillStyle = b.color;
+      ctx.fill();
+    }
+  }
+
+  function loop() {
+    var now = Date.now();
+    updateBalls(Math.min(now - lastTime, 50));
+    lastTime = now;
+    drawBalls();
+    requestAnimationFrame(loop);
+  }
+
+
+  /* ─────────────────────────────────────────
+     IMAGE LOADING HINTS
+     Sets decoding="async" on every image, and loading="lazy" on
+     anything outside the initially-visible home page so we don't
+     fetch ~30 photos on first paint.
+  ───────────────────────────────────────── */
+  document.querySelectorAll('main img').forEach(function (img) {
+    img.decoding = 'async';
+    if (!img.closest('#page-home')) img.loading = 'lazy';
+  });
+
+
+  /* ─────────────────────────────────────────
+     PAGE NAVIGATION (scroll-based)
+     Main sections (home/portfolio/ceramics/about) are always
+     visible and scroll into view. Detail pages (design/interviews/ai)
+     are toggled as overlays when a project card is clicked.
+  ───────────────────────────────────────── */
+
+  var mainEl   = document.querySelector('main');
+  var navLinks = document.querySelectorAll('.nav-link');
+  var SUB_PAGES = ['design', 'interviews', 'ai'];
+
+  var BASE_TITLE = 'Caroline Grace Alexander';
+  var PAGE_TITLES = {
+    design:     'Lighting Design — ' + BASE_TITLE,
+    interviews: 'Conversations with Women — ' + BASE_TITLE,
+    ai:         'The AI Feedback Loop — ' + BASE_TITLE
+  };
+
+  /* ── Open a detail sub-page ── */
+  function openDetail(pageId) {
+    document.querySelectorAll('.page--sub').forEach(function (p) {
+      p.classList.remove('active');
+    });
+    var target = document.getElementById('page-' + pageId);
+    if (target) {
+      target.classList.add('active');
+      mainEl.classList.add('is-detail');
+      history.replaceState(null, '', '#' + pageId);
+      if (PAGE_TITLES[pageId]) document.title = PAGE_TITLES[pageId];
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }
+
+  /* ── Close detail, return to scroll position ── */
+  function closeDetail(backTo) {
+    document.querySelectorAll('.page--sub').forEach(function (p) {
+      p.classList.remove('active');
+    });
+    mainEl.classList.remove('is-detail');
+    document.title = BASE_TITLE + ' — Senior UX Researcher';
+    var targetId = backTo ? (backTo.startsWith('page-') ? backTo : 'page-' + backTo) : 'page-portfolio';
+    history.replaceState(null, '', '#' + targetId);
+    var el = document.getElementById(targetId);
+    if (el) el.scrollIntoView({ behavior: 'instant' });
+  }
+
+  /* ── Nav card clicks ── */
+  document.querySelectorAll('.nav-card[data-page]').forEach(function (card) {
+    card.addEventListener('click', function (e) {
+      e.preventDefault();
+      var page = card.dataset.page;
+      if (SUB_PAGES.indexOf(page) !== -1) {
+        openDetail(page);
+      } else {
+        /* If in detail view, close it first then scroll */
+        if (mainEl.classList.contains('is-detail')) closeDetail(page);
+        else {
+          var el = document.getElementById('page-' + page);
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+
+  /* ── Back links on detail pages ── */
+  document.querySelectorAll('.back-link[data-page]').forEach(function (l) {
+    l.addEventListener('click', function (e) {
+      e.preventDefault();
+      closeDetail(l.dataset.page);
+    });
+  });
+
+  /* ── Nav links: if in detail view, close it and scroll to section ── */
+  navLinks.forEach(function (l) {
+    l.addEventListener('click', function (e) {
+      if (mainEl.classList.contains('is-detail')) {
+        e.preventDefault();
+        var href = l.getAttribute('href').replace('#', '');
+        closeDetail(href.replace('page-', ''));
+      }
+      /* otherwise let the browser handle the anchor scroll natively */
+    });
+  });
+
+  /* ── CGA logo: scroll to top ── */
+  canvas.addEventListener('click', function () {
+    if (mainEl.classList.contains('is-detail')) {
+      closeDetail('home');
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    navLinks.forEach(function (l) { l.classList.remove('active'); });
+  });
+  canvas.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (mainEl.classList.contains('is-detail')) closeDetail('home');
+      else window.scrollTo({ top: 0, behavior: 'smooth' });
+      navLinks.forEach(function (l) { l.classList.remove('active'); });
+    }
+  });
+
+  /* ── Intersection Observer: highlight active nav link while scrolling ── */
+  var scrollSections = ['page-portfolio', 'page-about', 'page-contact']
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  var sectionObserver = new IntersectionObserver(function (entries) {
+    if (mainEl.classList.contains('is-detail')) return;
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      var sectionHref = '#' + entry.target.id;
+      navLinks.forEach(function (l) {
+        l.classList.toggle('active', l.getAttribute('href') === sectionHref);
+      });
+    });
+  }, {
+    rootMargin: '-' + (parseInt(getComputedStyle(document.documentElement)
+      .getPropertyValue('--header-h')) || 62) + 'px 0px -55% 0px',
+    threshold: 0
+  });
+
+  scrollSections.forEach(function (s) { sectionObserver.observe(s); });
+
+  /* Remove active from all nav links when home section is in view */
+  var homeObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        navLinks.forEach(function (l) { l.classList.remove('active'); });
+      }
+    });
+  }, { rootMargin: '0px 0px -80% 0px', threshold: 0 });
+  var homeEl = document.getElementById('page-home');
+  if (homeEl) homeObserver.observe(homeEl);
+
+  /* ── On load: if hash points to a sub-page, open it; otherwise scroll ── */
+  (function () {
+    var hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    var subId = hash.replace('page-', '');
+    if (SUB_PAGES.indexOf(subId) !== -1) {
+      openDetail(subId);
+    } else {
+      var el = document.getElementById(hash) || document.getElementById('page-' + hash);
+      if (el) el.scrollIntoView({ behavior: 'instant' });
+    }
+  })();
+
+
+  /* ─────────────────────────────────────────
+     CERAMICS GALLERY
+     To add/remove photos: update this array and move the file
+     into the ceramics_gallery/ folder.
+  ───────────────────────────────────────── */
+  (function buildGallery() {
+    var photos = [
+      "ChatGPT Image May 4, 2026 at 10_46_21 AM.png",
+      "DSCF4205.JPG","DSCF4263.JPG","DSCF4264.JPG","DSCF4269.JPG",
+      "DSCF4280.JPG","DSCF4282.JPG","DSCF4309.JPG","DSCF4315.JPG",
+      "DSCF4316.JPG","DSCF4320.JPG","DSCF4323.JPG","DSCF4325.JPG",
+      "DSCF4327.JPG","DSCF4330.JPG","DSCF4336.JPG","DSCF4342.JPG",
+      "DSCF4344.JPG","DSCF4364.JPG","DSCF4377.JPG","DSCF4382.JPG",
+      "DSCF4386.JPG","DSCF4402.JPG","DSC_0213.JPG","DSC_0254.JPG",
+      "DSC_0290.JPG","DSC_0301 (1).JPG","DSC_0301.JPG","DSC_0303.JPG",
+      "DSC_0314.JPG","DSC_0318.JPG","DSC_0325.JPG","DSC_0329.JPG",
+      "DSC_0334.JPG","DSC_0352.JPG","DSC_0355.JPG","DSC_0369.JPG",
+      "DSC_0375.JPG","DSC_0383.JPG","DSC_0415.JPG","IMG_4105.jpeg",
+      "P1330469.JPG","tempImage98ozlJ.jpeg","tempImageTeaZXG.jpeg",
+      "tempImagehRexmk.jpeg","tempImagetDyhCP.jpeg"
+    ];
+
+    var grid = document.getElementById('ceramicsGallery');
+
+    photos.forEach(function (filename, i) {
+      var cell = document.createElement('button');
+      cell.className = 'gallery-cell';
+      cell.type = 'button';
+      cell.setAttribute('aria-label', 'View ceramic piece ' + (i + 1) + ' of ' + photos.length);
+      cell.dataset.index = i;
+
+      var img = document.createElement('img');
+      img.src = 'images/ceramics_gallery/' + encodeURIComponent(filename);
+      img.alt = '';
+      img.loading = 'lazy';
+      img.decoding = 'async';
+      img.addEventListener('error', function () { cell.remove(); });
+
+      cell.appendChild(img);
+      grid.appendChild(cell);
+    });
+  })();
+
+
+  /* ─────────────────────────────────────────
+     CERAMICS LIGHTBOX
+     Click a tile → fullscreen viewer with prev/next/close.
+     Keyboard: ← → to navigate, Esc to close.
+  ───────────────────────────────────────── */
+  (function lightbox() {
+    var lb        = document.getElementById('lightbox');
+    var lbImg     = document.getElementById('lightbox-img');
+    var lbCounter = document.getElementById('lightbox-counter');
+    var prev      = document.getElementById('lightbox-prev');
+    var next      = document.getElementById('lightbox-next');
+    var closeBtn  = document.getElementById('lightbox-close');
+    if (!lb) return;
+
+    var cells = document.querySelectorAll('#ceramicsGallery .gallery-cell');
+    if (!cells.length) return;
+
+    var current = 0;
+    var lastFocus = null;
+
+    function show() {
+      var img = cells[current].querySelector('img');
+      lbImg.src = img.src;
+      lbCounter.textContent = (current + 1) + ' of ' + cells.length;
+    }
+    function open(i) {
+      current = i;
+      lastFocus = document.activeElement;
+      show();
+      lb.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+    function go(delta) {
+      current = (current + delta + cells.length) % cells.length;
+      show();
+    }
+    function dismiss() {
+      lb.classList.remove('active');
+      document.body.style.overflow = '';
+      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+    }
+
+    cells.forEach(function (cell, i) {
+      cell.addEventListener('click', function () { open(i); });
+    });
+    prev.addEventListener('click', function () { go(-1); });
+    next.addEventListener('click', function () { go(1); });
+    closeBtn.addEventListener('click', dismiss);
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb) dismiss();
+    });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('active')) return;
+      if (e.key === 'Escape') dismiss();
+      else if (e.key === 'ArrowRight') go(1);
+      else if (e.key === 'ArrowLeft')  go(-1);
+    });
+  })();
+
+
+  /* ─────────────────────────────────────────
+     EMAIL OBFUSCATION
+  ───────────────────────────────────────── */
+  (function() {
+    var parts = ['cgracealexander', 'icloud.com'];
+    var email = parts[0] + '@' + parts[1];
+    var link = document.getElementById('email-link');
+    var display = document.getElementById('email-display');
+    if (link && display) {
+      display.textContent = email;
+      link.href = 'mailto:' + email;
+    }
+  })();
+
+})();
+</script>
+
+<script>
+/* ─────────────────────────────────────────
+   GRACE PARTICLE ANIMATION
+───────────────────────────────────────── */
+function makeGraceAnim(graceCanvas) {
+  if (!graceCanvas) return;
+
+  var particleColor = '#1A1A18';
+  var balls = [];
+  var timeDiff = 'first';
+  var mousePos = { x: 9999, y: 9999 };
+
+  window.requestAnimFrame = (function () {
+    return window.requestAnimationFrame ||
+      window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
+      function (cb) { window.setTimeout(cb, 1000 / 60); };
+  })();
+
+  function Ball(x, y, vx, vy) {
+    this.x = x; this.y = y; this.vx = vx; this.vy = vy;
+    this.origX = x; this.origY = y; this.radius = 1;
+  }
+
+  function initBalls() {
+    balls = [];
+    var xoffset = -50, yoffset = 0;
+
+    function addLetter(arr, density) {
+      for (var i = 0; i < arr.length; i++) {
+        var elem = arr[i];
+        elem[1] -= 10;
+        balls.push(new Ball(elem[0], elem[1], 0, 0));
+        for (var j = 0; j < density; j++) {
+          var x = elem[0] + (Math.random() * 14) - 7;
+          var y = elem[1] + (Math.random() * 14) - 7;
+          balls.push(new Ball(x, y, 0, 0));
+        }
+      }
+    }
+
+    addLetter([[163+xoffset,63+yoffset],[148+xoffset,53+yoffset],[133+xoffset,52+yoffset],[120+xoffset,53+yoffset],[107+xoffset,58+yoffset],[100+xoffset,70+yoffset],[92+xoffset,82+yoffset],[94+xoffset,96+yoffset],[95+xoffset,107+yoffset],[100+xoffset,120+yoffset],[114+xoffset,130+yoffset],[129+xoffset,136+yoffset],[142+xoffset,136+yoffset],[156+xoffset,136+yoffset],[164+xoffset,127+yoffset],[169+xoffset,110+yoffset],[156+xoffset,109+yoffset],[146+xoffset,110+yoffset]], 55);
+    addLetter([[210+xoffset,81+yoffset],[200+xoffset,85+yoffset],[195+xoffset,80+yoffset],[196+xoffset,90+yoffset],[196+xoffset,98+yoffset],[196+xoffset,106+yoffset],[196+xoffset,112+yoffset],[196+xoffset,120+yoffset],[196+xoffset,128+yoffset],[237+xoffset,86+yoffset],[225+xoffset,81+yoffset]], 45);
+    var oOffset = 67-50;
+    addLetter([[oOffset+210,81+yoffset],[oOffset+197,91+yoffset],[oOffset+196,103+yoffset],[oOffset+200,116+yoffset],[oOffset+209,127+yoffset],[oOffset+223,130+yoffset],[oOffset+237,127+yoffset],[oOffset+250,130+yoffset],[oOffset+244,114+yoffset],[oOffset+242,98+yoffset],[oOffset+237,86+yoffset],[oOffset+225,81+yoffset]], 45);
+    addLetter([[380+xoffset,80+yoffset],[368+xoffset,76+yoffset],[356+xoffset,79+yoffset],[345+xoffset,84+yoffset],[340+xoffset,98+yoffset],[340+xoffset,110+yoffset],[345+xoffset,120+yoffset],[358+xoffset,128+yoffset],[370+xoffset,130+yoffset],[380+xoffset,128+yoffset]], 45);
+    addLetter([[426+xoffset,101+yoffset],[436+xoffset,98+yoffset],[451+xoffset,95+yoffset],[449+xoffset,83+yoffset],[443+xoffset,78+yoffset],[430+xoffset,77+yoffset],[418+xoffset,82+yoffset],[414+xoffset,93+yoffset],[412+xoffset,108+yoffset],[420+xoffset,120+yoffset],[430+xoffset,127+yoffset],[442+xoffset,130+yoffset],[450+xoffset,125+yoffset]], 45);
+  }
+
+  function updateBalls(td) {
+    var collisionDamper = 1;
+    var floorFriction = 0.001 * td;
+    var mouseForceMultiplier = 0.2 * td;
+    var restoreForce = td / 600;
+
+    for (var n = 0; n < balls.length; n++) {
+      var ball = balls[n];
+      ball.y += 4 * ball.vy;
+      ball.x += 4 * ball.vx;
+
+      // restore forces
+      if (ball.x > ball.origX) { ball.vx -= restoreForce; }
+      else                      { ball.vx += restoreForce; }
+      if (ball.y > ball.origY) { ball.vy -= restoreForce; }
+      else                     { ball.vy += restoreForce; }
+
+      // mouse forces
+      var distX = ball.x - mousePos.x;
+      var distY = ball.y - mousePos.y;
+      var radius = Math.sqrt(distX * distX + distY * distY);
+      var totalDist = Math.abs(distX) + Math.abs(distY);
+      if (totalDist > 0 && radius > 0) {
+        var forceX = (Math.abs(distX) / totalDist) * (1 / radius) * mouseForceMultiplier;
+        var forceY = (Math.abs(distY) / totalDist) * (1 / radius) * mouseForceMultiplier;
+        if (distX > 0) { ball.vx += forceX; } else { ball.vx -= forceX; }
+        if (distY > 0) { ball.vy += forceY; } else { ball.vy -= forceY; }
+      }
+
+      // floor friction — clamped so it never overshoots zero and causes micro-vibration
+      if (ball.vx > floorFriction)       { ball.vx -= floorFriction; }
+      else if (ball.vx < -floorFriction) { ball.vx += floorFriction; }
+      else                               { ball.vx = 0; }
+      if (ball.vy > floorFriction)       { ball.vy -= floorFriction; }
+      else if (ball.vy < -floorFriction) { ball.vy += floorFriction; }
+      else                               { ball.vy = 0; }
+
+      // boundary conditions
+      var w = graceCanvas.width, h = graceCanvas.height;
+      if (ball.y > h - ball.radius) { ball.y = h - ball.radius - 2; ball.vy *= -1; ball.vy *= (1 - collisionDamper); }
+      if (ball.y < ball.radius)     { ball.y = ball.radius + 2;     ball.vy *= -1; ball.vy *= (1 - collisionDamper); }
+      if (ball.x > w - ball.radius) { ball.x = w - ball.radius - 2; ball.vx *= -1; ball.vx *= (1 - collisionDamper); }
+      if (ball.x < ball.radius)     { ball.x = ball.radius + 2;     ball.vx *= -1; ball.vx *= (1 - collisionDamper); }
+    }
+  }
+
+  var lastTime = new Date().getTime();
+
+  function animate() {
+    var ctx = graceCanvas.getContext('2d');
+    var now = new Date().getTime();
+    var td = timeDiff === 'first' ? 0 : (now - lastTime) % 100;
+    timeDiff = td;
+    lastTime = now;
+
+    updateBalls(td);
+    ctx.clearRect(0, 0, graceCanvas.width, graceCanvas.height);
+    ctx.fillStyle = particleColor;
+    for (var n = 0; n < balls.length; n++) {
+      var ball = balls[n];
+      ctx.beginPath();
+      ctx.arc(ball.x, ball.y, ball.radius, 0, 2 * Math.PI, false);
+      ctx.fill();
+    }
+    requestAnimFrame(animate);
+  }
+
+  function getCanvasMousePos(evt) {
+    var rect = graceCanvas.getBoundingClientRect();
+    return { x: evt.clientX - rect.left, y: evt.clientY - rect.top };
+  }
+
+  graceCanvas.addEventListener('mousemove', function (evt) { mousePos = getCanvasMousePos(evt); });
+  graceCanvas.addEventListener('mouseout', function () { mousePos = { x: 9999, y: 9999 }; });
+  graceCanvas.addEventListener('touchmove', function (evt) {
+    evt.preventDefault();
+    var rect = graceCanvas.getBoundingClientRect();
+    mousePos = { x: evt.touches[0].clientX - rect.left, y: evt.touches[0].clientY - rect.top };
+  }, { passive: false });
+  graceCanvas.addEventListener('touchend', function () { mousePos = { x: 9999, y: 9999 }; });
+
+  initBalls();
+
+  /* respect reduced-motion preference — draw once, skip loop */
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var ctx = graceCanvas.getContext('2d');
+    ctx.fillStyle = particleColor;
+    for (var n = 0; n < balls.length; n++) {
+      var b = balls[n];
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.radius, 0, 2 * Math.PI, false);
+      ctx.fill();
+    }
+  } else {
+    animate();
+  }
+}
+
+makeGraceAnim(document.getElementById('graceCanvas'));
+makeGraceAnim(document.getElementById('graceCanvas2'));
+
+/* ─────────────────────────────────────────
+   GOLDEN GATE BRIDGE PARTICLE ANIMATION
+───────────────────────────────────────── */
+(function () {
+  var section = document.getElementById('page-contact');
+  var canvas  = document.getElementById('bridgeCanvas');
+  if (!canvas || !section) return;
+
+  var dpr = window.devicePixelRatio || 1;
+  var W = 0, H = 0;
+  var balls = [];
+  var mousePos = { x: -9999, y: -9999 };
+  var lastTime = Date.now();
+
+  // Cyanotype colours — pink layer and blue layer, slight offset
+  var PINK   = 'rgba(26, 26, 24, 0.72)';
+  var BLUE   = 'rgba(26, 26, 24, 0.72)';
+  var OFFSET = 0; // px shift between layers
+
+  function Ball(x, y, ox, oy, color) {
+    this.x = x;   this.y = y;
+    this.origX = ox; this.origY = oy;
+    this.vx = 0;  this.vy = 0;
+    this.radius = 1;
+    this.color  = color;
+  }
+
+  function resize() {
+    var r = canvas.parentElement.getBoundingClientRect();
+    W = Math.round(r.width);
+    H = Math.round(r.height);
+    canvas.width  = W * dpr;
+    canvas.height = H * dpr;
+    canvas.getContext('2d').setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+
+  function buildBalls(imgEl) {
+    balls = [];
+    var sw = 800, sh = 800;
+    var sc = document.createElement('canvas');
+    sc.width = sw; sc.height = sh;
+    var sctx = sc.getContext('2d');
+    sctx.drawImage(imgEl, 0, 0, sw, sh);
+    var data = sctx.getImageData(0, 0, sw, sh).data;
+
+    var step = 4;
+    for (var y = 0; y < sh; y += step) {
+      for (var x = 0; x < sw; x += step) {
+        /* check entire step×step cell so thin lines aren't missed */
+        var isDark = false;
+        for (var dy = 0; dy < step && !isDark; dy++) {
+          for (var dx = 0; dx < step && !isDark; dx++) {
+            var nx = Math.min(x + dx, sw - 1);
+            var ny = Math.min(y + dy, sh - 1);
+            var i = (ny * sw + nx) * 4;
+            var brightness = data[i] * 0.299 + data[i+1] * 0.587 + data[i+2] * 0.114;
+            if (brightness < 128) isDark = true;
+          }
+        }
+        if (isDark) {
+          var cx = (x / sw) * W;
+          var cy = (y / sh) * H;
+          balls.push(new Ball(cx, cy, cx, cy, BLUE));
+          balls.push(new Ball(cx + OFFSET, cy + OFFSET, cx + OFFSET, cy + OFFSET, PINK));
+        }
+      }
+    }
+  }
+
+  function update() {
+    var now = Date.now();
+    var td  = Math.min(now - lastTime, 50);
+    lastTime = now;
+
+    var floorFriction = 0.001 * td;
+    var mouseForceMultiplier = 0.2 * td;
+    var restoreForce = td / 600;
+
+    for (var n = 0; n < balls.length; n++) {
+      var b = balls[n];
+      b.x += 4 * b.vx;
+      b.y += 4 * b.vy;
+
+      // Restore to origin
+      if (b.x > b.origX) { b.vx -= restoreForce; } else { b.vx += restoreForce; }
+      if (b.y > b.origY) { b.vy -= restoreForce; } else { b.vy += restoreForce; }
+
+      // Mouse repulsion
+      var distX = b.x - mousePos.x;
+      var distY = b.y - mousePos.y;
+      var radius = Math.sqrt(distX * distX + distY * distY);
+      var totalDist = Math.abs(distX) + Math.abs(distY);
+      if (totalDist > 0 && radius > 0) {
+        var forceX = (Math.abs(distX) / totalDist) * (1 / radius) * mouseForceMultiplier;
+        var forceY = (Math.abs(distY) / totalDist) * (1 / radius) * mouseForceMultiplier;
+        if (distX > 0) { b.vx += forceX; } else { b.vx -= forceX; }
+        if (distY > 0) { b.vy += forceY; } else { b.vy -= forceY; }
+      }
+
+      // Floor friction — clamped so it never overshoots zero and causes micro-vibration
+      if (b.vx > floorFriction)       { b.vx -= floorFriction; }
+      else if (b.vx < -floorFriction) { b.vx += floorFriction; }
+      else                            { b.vx = 0; }
+      if (b.vy > floorFriction)       { b.vy -= floorFriction; }
+      else if (b.vy < -floorFriction) { b.vy += floorFriction; }
+      else                            { b.vy = 0; }
+
+      // Bounds — zero out velocity on hit, same as Grace
+      if (b.x < b.radius)     { b.x = b.radius;     b.vx = 0; }
+      if (b.x > W - b.radius) { b.x = W - b.radius; b.vx = 0; }
+      if (b.y < b.radius)     { b.y = b.radius;      b.vy = 0; }
+      if (b.y > H - b.radius) { b.y = H - b.radius;  b.vy = 0; }
+    }
+  }
+
+  function animate() {
+    var ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, W, H);
+    update();
+    for (var n = 0; n < balls.length; n++) {
+      var b = balls[n];
+      ctx.beginPath();
+      ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+      ctx.fillStyle = b.color;
+      ctx.fill();
+    }
+    requestAnimationFrame(animate);
+  }
+
+  // Track mouse over the whole section (canvas has pointer-events: none)
+  section.addEventListener('mousemove', function (e) {
+    var rect = canvas.getBoundingClientRect();
+    mousePos = {
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    };
+  });
+  section.addEventListener('mouseleave', function () {
+    mousePos = { x: -9999, y: -9999 };
+  });
+  section.addEventListener('touchmove', function (e) {
+    e.preventDefault();
+    var rect = canvas.getBoundingClientRect();
+    mousePos = {
+      x: e.touches[0].clientX - rect.left,
+      y: e.touches[0].clientY - rect.top
+    };
+  }, { passive: false });
+  section.addEventListener('touchend', function () {
+    mousePos = { x: -9999, y: -9999 };
+  });
+
+  // Build bridge and start animation
+  // Load outline image and build balls from dark pixels
+  var img = new Image();
+  img.onload = function () {
+    resize();
+    buildBalls(img);
+    /* respect reduced-motion preference — draw once, skip loop */
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var ctx = canvas.getContext('2d');
+      ctx.clearRect(0, 0, W, H);
+      for (var n = 0; n < balls.length; n++) {
+        var b = balls[n];
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, b.radius, 0, Math.PI * 2);
+        ctx.fillStyle = b.color;
+        ctx.fill();
+      }
+    } else {
+      animate();
+    }
+  };
+  img.onerror = function () {
+    console.warn('Bridge image not found at images/ggb.jpg');
+  };
+  img.src = 'images/ggb.jpg';
+
+})();
+</script>
+
+</body>
+</html>
