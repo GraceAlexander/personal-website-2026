@@ -1741,9 +1741,8 @@
       <h2 class="intro-title">Let's connect!</h2>
       <p style="font-size: var(--fs-base); font-weight: 300; color: var(--text-muted); line-height: 1.7; margin: 0; max-width: 420px;">I'm always happy to connect with other UX researchers — I'm curious about what the research experience looks like across different companies and teams. Feel free to reach out!</p>
       <div class="contact-buttons">
-        <a id="email-link" class="contact-btn" aria-label="Send email">
-          <span id="email-display">Email</span>
-          <span aria-hidden="true">↗</span>
+        <a href="mailto:cgracealexander@icloud.com" class="contact-btn" aria-label="Send email">
+          Email ↗
         </a>
         <a href="https://www.linkedin.com/in/cgracealexander" target="_blank" rel="noopener noreferrer" class="contact-btn" aria-label="LinkedIn">
           LinkedIn ↗
@@ -2239,19 +2238,6 @@
   })();
 
 
-  /* ─────────────────────────────────────────
-     EMAIL OBFUSCATION
-  ───────────────────────────────────────── */
-  (function() {
-    var parts = ['cgracealexander', 'icloud.com'];
-    var email = parts[0] + '@' + parts[1];
-    var link = document.getElementById('email-link');
-    var display = document.getElementById('email-display');
-    if (link && display) {
-      display.textContent = email;
-      link.href = 'mailto:' + email;
-    }
-  })();
 
 })();
 </script>
