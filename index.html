@@ -374,7 +374,9 @@
       line-height: 1.8;
       max-width: 560px;
     }
-    .bio-text strong {
+    .bio-text strong,
+    .process-row-meta strong,
+    .project-text strong {
       color: #555552;
       font-weight: 600;
     }
@@ -643,7 +645,7 @@
 
     /* ─── Process row (Lighting Design steps) ─── */
     .process-row {
-      padding: 56px 0;
+      padding: 32px 0;
       border-bottom: 1px solid var(--border);
       display: flex;
       flex-direction: column;
@@ -718,6 +720,28 @@
       font-weight: 300;
       color: var(--text);
       line-height: 1.85;
+    }
+    .process-bullet-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .process-bullet-list li {
+      font-size: var(--fs-base);
+      font-weight: 300;
+      color: var(--text);
+      line-height: 1.75;
+      padding-left: 1em;
+      position: relative;
+    }
+    .process-bullet-list li::before {
+      content: '–';
+      position: absolute;
+      left: 0;
+      color: var(--text-muted);
     }
 
 
@@ -1252,7 +1276,7 @@
     <div class="page-bottom">
       <div class="card-grid">
         <a class="nav-card nav-card--image is-project" href="#" data-page="ai" style="background: #fff;">
-          <img class="nav-card-img" src="images/ai_feedback_loop.JPG" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design"
+          <img class="nav-card-img" src="images/TreeID.png" alt="TreeID app icon — a tree illustrated in dots"
                style="object-fit: contain; object-position: center center;"
                onerror="this.parentElement.classList.remove('nav-card--image')">
           <div class="nav-card-footer nav-card-footer--detailed">
@@ -1260,7 +1284,7 @@
               <span class="nav-card-label">AI Feedback Loop</span>
               <span class="nav-card-arrow">→</span>
             </div>
-            <p class="nav-card-desc">What happens when you take design, dev, and product out of the product lifecycle?</p>
+            <p class="nav-card-desc">An experiment exploring what happens when you remove design, dev, and product from the product lifecycle.</p>
           </div>
         </a>
         <a class="nav-card nav-card--image is-project" href="#" data-page="interviews">
@@ -1537,21 +1561,21 @@
 
     <div class="page-top">
       <div class="circle-photo is-project">
-        <img src="images/ai_feedback_loop.JPG" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design"
+        <img src="images/TreeID.png" alt="TreeID app icon — a tree illustrated in dots"
              style="object-position: center center;"
              onerror="this.parentElement.classList.add('empty'); this.remove()">
       </div>
       <div class="intro-text">
         <h2 class="intro-title">The AI Feedback Loop.</h2>
         <p class="intro-sub">
-          What happens when you take design, dev, and product out of the product lifecycle?
+          An experiment exploring what happens when you remove design, dev, and product from the product lifecycle.
         </p>
       </div>
     </div>
 
     <div class="project-body">
 
-      <div style="display: flex; flex-direction: column; gap: 24px;">
+      <div style="display: flex; flex-direction: column; gap: 48px;">
 
         <div class="project-cols" style="align-items: start;">
 
@@ -1561,18 +1585,24 @@
               This project explores what happens when AI and usability testing are connected in a closed loop with no designer or developer in the middle. The premise is simple: an AI generates a prototype, real users test it, and their feedback goes straight back into the AI to generate the next version.
             </p>
             <p class="project-text">
-              The interesting question isn't whether AI can design — it's what kind of design emerges when the only input is real user behavior, iterated on continuously and automatically.
-            </p>
-            <p class="project-text">
               Tools like UserTesting.com already let you connect to users on demand. In a fully realized version of this loop, a design could go from prototype to tested to revised without a human decision point in between. And since most usability testing doesn't require specialized expertise, this could be an inexpensive way to iterate.
             </p>
             <p class="project-text">
-              To be clear: I believe humans should be in the loop with AI. This project is a deliberate experiment to see what happens when they're not.
+              I believe humans should be in the loop with AI. This project is a deliberate experiment to see what happens when they're not.
             </p>
           </div>
 
           <div>
-            <p class="project-section-label">The result</p>
+            <img src="images/ai_feedback_loop.png" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design"
+                 style="width: 80%; height: auto; display: block; margin: 0 auto;">
+          </div>
+
+        </div>
+
+        <div class="project-cols" style="align-items: start;">
+
+          <div>
+            <p class="project-section-label">The Result</p>
             <div class="process-row-phones">
               <div class="process-row-phone">
                 <img src="images/ai_feedback_loop/final-home.png" alt="App home screen with a tree photo and two action buttons: Take a Photo and Choose from Library">
@@ -1583,19 +1613,17 @@
             </div>
           </div>
 
-        </div>
+          <div>
+            <p class="project-section-label">My takeaway</p>
+            <p class="project-text"><strong>It took more iterations than I expected, but the loop produced a working app.</strong><br>Claude optimized for the feedback it received rather than design best practices — it gave users what they asked for, not what a skilled designer would know to do from the start. It also didn't weigh findings by frequency; one user's feedback carried the same weight as three. Better prompt structure could help address both.</p>
+            <p class="project-text">I was impressed with the output. One of the main limiting factors was the lightweight prompts I used — with more structure around how to weigh and incorporate findings, the loop could get there faster and more reliably.</p>
+          </div>
 
-        <div class="takeaway-wide">
-          <p class="project-section-label">My takeaway</p>
-          <p class="project-text">It took more iterations than I expected to get to a decent-looking app. But, surprisingly, it did get there.</p>
-          <p class="project-text">That said, the designs Claude produced didn't always follow best practices or standard design patterns — it was optimizing for the feedback it received, not for what a skilled designer would know to do from the start.</p>
-          <p class="project-text">Claude also didn't prioritize findings the way I would when conducting research — it treated feedback from one user the same as feedback from three. A more experienced researcher would weigh findings by how many users raised them. More specific instructions, a tighter prompt structure, or a more specific skill could help address this.</p>
         </div>
 
       </div>
 
       <div>
-        <p class="project-section-label">The experiment</p>
         <div class="process-rows">
 
           <!-- Iteration 1 -->
@@ -1616,15 +1644,24 @@
               <div class="process-row-text">
                 <div>
                   <p class="process-row-meta-label">Research findings</p>
-                  <p class="process-row-desc">The core flow worked — users could identify a tree without friction. Three problems emerged: a "?" placeholder icon that everyone flagged as unfinished, a results page that didn't telegraph scrolling (one user never found the fun fact or the CTA), and a consistent ask for more depth — reference photos, tappable match cards, a habitat map.</p>
+                  <ul class="process-bullet-list">
+                    <li>Core flow worked — users could identify a tree without friction</li>
+                    <li>"?" placeholder icon flagged as unfinished by all users</li>
+                    <li>Results page didn't afford scrolling — one user never found the fun fact or CTA</li>
+                    <li>Consistent ask for more depth: reference photos, tappable match cards, a habitat map</li>
+                  </ul>
                 </div>
                 <div class="process-row-meta-block">
                   <p class="process-row-meta-label">AI's recommendations</p>
-                  <p class="process-row-meta">Removed the redundant Recent strip from the home screen. Added a sticky "Identify Another Tree" button outside the scroll view. Made each match card expandable with a Wikipedia detail sheet. Linked the habitat card to an Apple Maps search.</p>
+                  <ul class="process-bullet-list">
+                    <li>Remove the redundant Recent strip from the home screen</li>
+                    <li>Add a sticky "Identify Another Tree" button outside the scroll view</li>
+                    <li>Make each match card expandable with a Wikipedia detail sheet</li>
+                    <li>Link the habitat card to an Apple Maps search</li>
+                  </ul>
                 </div>
                 <div class="process-row-meta-block">
-                  <p class="process-row-meta-label">My take</p>
-                  <p class="process-row-meta">Three of the four recommendations were each supported by only one user — a real generalizability problem. The AI also missed the "?" icon entirely, despite all three users raising it independently. That's both a sampling problem and a prompt problem. I needed to tighten both.</p>
+                  <p class="process-row-meta"><strong>Three of the four recommendations were each raised by only one user — not enough to be a reliable finding.</strong><br>The AI also missed the "?" icon entirely, despite all three users raising it independently.</p>
                 </div>
               </div>
             </div>
@@ -1648,15 +1685,22 @@
               <div class="process-row-text">
                 <div>
                   <p class="process-row-meta-label">Research findings</p>
-                  <p class="process-row-desc">Results improved, but the landing page was unanimously called "funny" or unpolished. The bigger issue: the green "Identify a Tree" button was so dominant that users interpreted the confirmation dialog as a continuation of the same step. They kept expecting to press the main button again rather than choose from the dialog.</p>
+                  <ul class="process-bullet-list">
+                    <li>Landing page unanimously called "funny" or unpolished</li>
+                    <li>Users kept expecting to press the main button again rather than choose from the dialog</li>
+                  </ul>
                 </div>
                 <div class="process-row-meta-block">
                   <p class="process-row-meta-label">AI's recommendations</p>
-                  <p class="process-row-meta">Redesigned the landing page with a centered hero structure — app name and tagline at the top, illustration in the middle, buttons anchored at the bottom. Replaced the single CTA with two explicit buttons ("Take Photo" / "Choose from Library"), eliminating the dialog entirely. Added reference photos to expanded match cards. Removed confusing scroll-hint chevrons.</p>
+                  <ul class="process-bullet-list">
+                    <li>Redesign the landing page with a centered hero structure — app name and tagline at the top, illustration in the middle, buttons anchored at the bottom</li>
+                    <li>Replace the single CTA with two explicit buttons ("Take Photo" / "Choose from Library"), eliminating the dialog entirely</li>
+                    <li>Add reference photos to expanded match cards</li>
+                    <li>Remove confusing scroll-hint chevrons</li>
+                  </ul>
                 </div>
                 <div class="process-row-meta-block">
-                  <p class="process-row-meta-label">My take</p>
-                  <p class="process-row-meta">The biggest visual leap of the three rounds. The landing page fix was the right call. But the AI was still overgeneralizing — several recommendations came from two users rather than three. The pattern-matching was improving, but the threshold for what counted as a "finding" was still too low.</p>
+                  <p class="process-row-meta"><strong>Removing duplicate text and prioritizing information visually were changes in the right direction.</strong><br>But the AI was still overgeneralizing — several recommendations came from two users rather than three. The threshold for what counted as a "finding" was still low.</p>
                 </div>
               </div>
             </div>
@@ -1680,15 +1724,20 @@
               <div class="process-row-text">
                 <div>
                   <p class="process-row-meta-label">Research findings</p>
-                  <p class="process-row-desc">The identify flow and results screen stopped drawing complaints entirely — a meaningful improvement from round one. The one issue all three users raised independently, in almost identical terms: a black "?" box sitting on top of the green circle in the hero. The tree emoji wasn't rendering in the iOS simulator and was falling back to a placeholder. One rendering bug, otherwise working.</p>
+                  <ul class="process-bullet-list">
+                    <li>Identify flow and results screen stopped drawing complaints — a meaningful improvement from round one</li>
+                    <li>One issue raised by all three users: a black "?" box on top of the green circle (tree emoji not rendering in the iOS simulator)</li>
+                  </ul>
                 </div>
                 <div class="process-row-meta-block">
                   <p class="process-row-meta-label">AI's recommendations</p>
-                  <p class="process-row-meta">Replaced the emoji with an SF Symbol (tree.fill) for reliable rendering across all iOS devices. Nudged the fun fact text back from secondary grey to primary — the deprioritization from the previous round had gone slightly too far.</p>
+                  <ul class="process-bullet-list">
+                    <li>Replace the emoji with an SF Symbol (tree.fill) for reliable rendering across all iOS devices</li>
+                    <li>Nudge the fun fact text back from secondary grey to primary — the deprioritization from the previous round had gone slightly too far</li>
+                  </ul>
                 </div>
                 <div class="process-row-meta-block">
-                  <p class="process-row-meta-label">My take</p>
-                  <p class="process-row-meta">Three rounds in, the loop had produced a working, coherent app. That surprised me. What it exposed clearly: AI is good at pattern-matching feedback into UI changes, but it consistently overgeneralizes from single data points and misses what users aren't saying. The loop may work — but having an initial design pass could save a lot of iterations.</p>
+                  <p class="process-row-meta"><strong>The app was usable, but it still hadn't solved for the icon issue that was mentioned every round of testing.</strong><br>In this case, AI was overgeneralizing UI changes from single data points. The icon was flagged every round, yet never prioritized. The loop may work, but having an initial design pass could save a lot of iterations. I incorporated these recommendations to get the result shown above.</p>
                 </div>
               </div>
             </div>
