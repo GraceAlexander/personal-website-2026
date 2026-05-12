@@ -6,6 +6,7 @@
   <title>Caroline Grace Alexander — Senior UX Researcher</title>
   <meta name="description" content="Caroline Grace Alexander is a senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
   <meta name="author" content="Caroline Grace Alexander">
+  <link rel="canonical" href="https://cgracealexander.com/">
 
   <!-- Inline SVG favicon: small "cga" mark in the page text color -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F6F5F1'/%3E%3Ctext x='16' y='21' font-family='Inter, sans-serif' font-size='13' font-weight='400' text-anchor='middle' fill='%231A1A18'%3Ecga%3C/text%3E%3C/svg%3E">
@@ -14,11 +15,12 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Caroline Grace Alexander — Senior UX Researcher">
   <meta property="og:description" content="Senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
-  <meta property="og:image" content="images/grace.jpeg">
+  <meta property="og:image" content="https://cgracealexander.com/images/grace.jpeg">
+  <meta property="og:url" content="https://cgracealexander.com/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Caroline Grace Alexander — Senior UX Researcher">
   <meta name="twitter:description" content="Senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
-  <meta name="twitter:image" content="images/grace.jpeg">
+  <meta name="twitter:image" content="https://cgracealexander.com/images/grace.jpeg">
 
   <!-- Structured data: Person -->
   <script type="application/ld+json">
@@ -28,6 +30,7 @@
     "name": "Caroline Grace Alexander",
     "alternateName": "Grace Alexander",
     "jobTitle": "Senior UX Researcher",
+    "url": "https://cgracealexander.com/",
     "worksFor": { "@type": "Organization", "name": "Apple" },
     "address": { "@type": "PostalAddress", "addressLocality": "San Francisco", "addressRegion": "CA" },
     "alumniOf": { "@type": "CollegeOrUniversity", "name": "Northwestern University" },
@@ -44,13 +47,22 @@
     gtag('config', 'G-4K6BCC2RKE');
   </script>
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <!-- Self-hosted Inter (variable font: all weights in one file) -->
+  <link rel="preload" href="fonts/InterVariable.woff2" as="font" type="font/woff2" crossorigin>
 
   <!-- Preload above-the-fold home portrait so it appears with the page -->
   <link rel="preload" as="image" href="images/grace.jpeg">
   <style>
+
+    /* ─── Self-hosted Inter (variable font covers weights 100–900) ─── */
+    @font-face {
+      font-family: 'Inter';
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url('fonts/InterVariable.woff2') format('woff2-variations'),
+           url('fonts/InterVariable.woff2') format('woff2');
+    }
 
     /* ─── Reset ─── */
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -63,7 +75,6 @@
       border-radius: 2px;
     }
     .nav-card:focus-visible,
-    .gallery-cell:focus-visible,
     .home-about-card:focus-visible { outline-offset: 4px; }
     #cgaCanvas:focus-visible { outline-offset: 6px; }
 
@@ -103,7 +114,7 @@
       --bg:         #F6F5F1;
       --surface:    #FFFFFF;
       --text:       #1A1A18;
-      --text-muted: #888882;
+      --text-muted: #6E6E68;
       --border:     #E2E1DC;
 
       /* Layout */
@@ -151,7 +162,7 @@
       color: var(--text);
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
@@ -180,6 +191,11 @@
       display: block;
       cursor: pointer;
       transition: opacity var(--t-fast);
+      /* Fallback styling — applies to the "cga" text inside the canvas
+         tag if the canvas itself can't render (unsupported / failed) */
+      font: 300 24px 'Inter', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1;
     }
     #cgaCanvas:hover { opacity: 0.7; }
 
@@ -281,11 +297,8 @@
       align-items: start;
       width: 100%;
     }
-    .hero-photo-col { justify-self: end; }
-    .hero-content-col { grid-column: 2; }
-
-    /* Left column: portrait */
     .hero-photo-col { flex-shrink: 0; justify-self: end; }
+    .hero-content-col { grid-column: 2; }
     .hero-circle {
       width: 300px;
       height: 300px;
@@ -312,7 +325,7 @@
     }
     .hero-tagline {
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text-muted);
       text-align: center;
       max-width: 460px;
@@ -357,10 +370,15 @@
     .intro-sub {
       margin-top: 14px;
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text-muted);
       line-height: 1.8;
       max-width: 420px;
+    }
+    /* Emphasized variant: heavier weight + softer tone */
+    .intro-sub--emphasis {
+      font-weight: 600;
+      color: #555552;
     }
 
     /* About-page bio: same width as intro-sub but body-text styling */
@@ -369,11 +387,12 @@
       flex-direction: column;
       gap: 24px;
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text);
       line-height: 1.8;
       max-width: 560px;
     }
+    .bio-text--inset { margin-top: var(--gap-lg); }
     .bio-text strong,
     .process-row-meta strong,
     .project-text strong {
@@ -419,7 +438,7 @@
     }
     .nav-card-desc {
       font-size: var(--fs-sm);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text-muted);
       line-height: 1.5;
       text-transform: none;
@@ -501,6 +520,10 @@
 
     .nav-card--image:hover .nav-card-img { transform: scale(1.03); }
 
+    /* Logo variant: contain (not cover) for logo-style images on a white card */
+    .nav-card--logo { background: #fff; }
+    .nav-card-img--logo { object-fit: contain; }
+
     .nav-card--image .nav-card-footer {
       position: absolute;
       bottom: 0;
@@ -523,40 +546,6 @@
       overflow: hidden;
       min-height: 2.6em;
     }
-
-
-    /* ─── Ceramics: gallery grid ─── */
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: var(--gap-md);
-    }
-
-    .gallery-cell {
-      aspect-ratio: 1;
-      background: var(--border);
-      overflow: hidden;
-      /* button reset */
-      padding: 0;
-      border: 0;
-      font: inherit;
-      color: inherit;
-      cursor: pointer;
-      display: block;
-      width: 100%;
-    }
-
-    .gallery-cell img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: var(--filter-project);
-      display: block;
-      transition: transform 0.4s ease;
-    }
-    .gallery-cell:hover img,
-    .gallery-cell:focus-visible img { transform: scale(1.03); }
-
 
 
     /* ─── Back link (sub-pages) ─── */
@@ -595,17 +584,29 @@
 
     .project-text {
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       line-height: 1.85;
       color: var(--text);
       max-width: 640px;
     }
     .project-text + .project-text { margin-top: 20px; }
+    .project-text--spaced { margin-top: 16px; }
     .takeaway-wide .project-text { max-width: none; }
     .page--full { max-width: none; }
     .project-cols--about { grid-template-columns: 2fr auto; }
-
-
+    .project-cols--start { align-items: start; }
+    .project-section-label--tight { margin-bottom: 6px; }
+    .project-stack-lg {
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+    .ai-loop-diagram {
+      width: 80%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
     /* ─── Two-column project layout (description + sidebar) ─── */
     .project-cols {
       display: grid;
@@ -637,7 +638,7 @@
     }
     .numbered-list-text {
       font-size: var(--fs-lg);
-      font-weight: 300;
+      font-weight: 350;
       line-height: 1.7;
     }
     .numbered-list-text strong { font-weight: 400; }
@@ -693,6 +694,15 @@
       filter: var(--filter-project);
       display: block;
     }
+    /* Natural-height variant: container fits image's real aspect ratio (e.g. wide sketches) */
+    .process-row-img--natural {
+      aspect-ratio: auto;
+      height: auto;
+    }
+    .process-row-img--natural img {
+      height: auto;
+      object-fit: unset;
+    }
     .process-row-text {
       display: flex;
       flex-direction: column;
@@ -700,7 +710,7 @@
     }
     .process-row-desc {
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text);
       line-height: 1.85;
     }
@@ -717,7 +727,7 @@
     }
     .process-row-meta {
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text);
       line-height: 1.85;
     }
@@ -731,7 +741,7 @@
     }
     .process-bullet-list li {
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text);
       line-height: 1.75;
       padding-left: 1em;
@@ -802,7 +812,7 @@
     }
     .home-about-tagline {
       font-size: var(--fs-sm);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text-muted);
     }
     .home-about-arrow {
@@ -880,7 +890,7 @@
     }
     .coming-soon-title {
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text-muted);
     }
     .coming-soon-tag {
@@ -891,6 +901,45 @@
       color: var(--text-muted);
     }
 
+
+    /* ─── Contact page layout ─── */
+    .contact-page {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-2xl);
+      overflow: hidden;
+    }
+    .contact-intro {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--gap-lg);
+      padding-top: 48px;
+    }
+    .contact-intro-text {
+      font-size: var(--fs-base);
+      font-weight: 350;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin: 0;
+      max-width: 420px;
+    }
+    .bridge-container {
+      margin: 0 calc(-1 * var(--page-pad-x));
+      width: calc(100% + 2 * var(--page-pad-x));
+      overflow: hidden;
+    }
+    .bridge-container img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .bridge-container canvas {
+      display: block;
+      width: 100%;
+      pointer-events: none;
+    }
 
     /* ─── Contact buttons (About page) ─── */
     .contact-buttons {
@@ -905,7 +954,7 @@
       border: 1px solid var(--border);
       background: var(--surface);
       font-size: var(--fs-base);
-      font-weight: 300;
+      font-weight: 350;
       color: var(--text);
       text-decoration: none;
       transition: background var(--t-fast), color var(--t-fast);
@@ -927,82 +976,9 @@
     .contact-card-link:hover { color: var(--text); }
     .contact-card-link-text {
       font-size: var(--fs-lg);
-      font-weight: 300;
+      font-weight: 350;
     }
     .contact-card-link-arrow { font-size: var(--fs-sm); }
-
-
-    /* ─── Lightbox (ceramics gallery) ─── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(26, 26, 24, 0.95);
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-      padding: 80px;
-    }
-    .lightbox.active { display: flex; }
-    .lightbox-img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      filter: var(--filter-project);
-      display: block;
-    }
-    .lightbox-control,
-    .lightbox-close {
-      position: absolute;
-      background: rgba(255,255,255,0.08);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.2);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font: inherit;
-      transition: background var(--t-fast);
-    }
-    .lightbox-control:hover,
-    .lightbox-close:hover { background: rgba(255,255,255,0.18); }
-    .lightbox-control:focus-visible,
-    .lightbox-close:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-    .lightbox-control {
-      top: 50%;
-      transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      font-size: 22px;
-      line-height: 1;
-    }
-    .lightbox-prev { left: 24px; }
-    .lightbox-next { right: 24px; }
-    .lightbox-close {
-      top: 24px;
-      right: 24px;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      font-size: 22px;
-      line-height: 1;
-    }
-    .lightbox-counter {
-      position: absolute;
-      top: 32px;
-      left: 28px;
-      color: rgba(255,255,255,0.7);
-      font-size: var(--fs-xs);
-      font-weight: 400;
-      letter-spacing: var(--ls-num);
-      text-transform: uppercase;
-    }
-    @media (max-width: 768px) {
-      .lightbox { padding: 60px 16px; }
-      .lightbox-prev { left: 8px; }
-      .lightbox-next { right: 8px; }
-    }
 
 
     /* ─── Footer ─── */
@@ -1101,14 +1077,9 @@
         max-width: 100%;
       }
 
-      .card-grid,
-      .gallery-grid {
+      .card-grid {
         grid-template-columns: 1fr;
         gap: var(--gap-sm);
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
       }
 
       .nav-card--image { aspect-ratio: 16 / 10; }
@@ -1139,6 +1110,8 @@
         padding: 24px 28px;
       }
 
+      .contact-intro { padding-top: var(--gap-lg); }
+
       .contact-card {
         min-width: 0;
         width: 100%;
@@ -1152,14 +1125,14 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+    }
 
-      /* Nav: tighten on very small screens */
-      @media (max-width: 380px) {
-        nav { gap: 12px; }
-        .nav-link { font-size: 9px; }
-        header { padding: 0 16px; }
-        :root { --page-pad-x: 16px; }
-      }
+    /* ─── Very small screens (≤380px): tighten nav ─── */
+    @media (max-width: 380px) {
+      nav { gap: 12px; }
+      .nav-link { font-size: 9px; }
+      header { padding: 0 16px; }
+      :root { --page-pad-x: 16px; }
     }
 
 
@@ -1200,11 +1173,9 @@
       }
       img { filter: none !important; max-width: 100%; height: auto; page-break-inside: avoid; }
       .nav-card,
-      .home-about-card,
-      .gallery-cell { border-color: #ccc; }
+      .home-about-card { border-color: #ccc; }
       .process-row,
       .coming-soon { page-break-inside: avoid; }
-      .gallery-grid { grid-template-columns: repeat(4, 1fr); }
     }
 
   </style>
@@ -1217,7 +1188,7 @@
      HEADER
 ═══════════════════════════════════════ -->
 <header>
-  <canvas id="cgaCanvas" role="button" tabindex="0" aria-label="Home" title="Home"></canvas>
+  <canvas id="cgaCanvas" role="button" tabindex="0" aria-label="Home" title="Home">CGA</canvas>
   <nav aria-label="Primary">
     <a href="#page-portfolio" class="nav-link">Portfolio</a>
     <a href="#page-about" class="nav-link">About Me</a>
@@ -1250,7 +1221,7 @@
         <div class="hero-content-col">
           <p class="hero-hi">Hi, I'm</p>
           <canvas id="graceCanvas" width="450" height="200" aria-hidden="true"></canvas>
-          <span class="sr-only">Grace</span>
+          <h1 class="sr-only">Grace — Caroline Grace Alexander, Senior UX Researcher</h1>
           <p class="hero-tagline">I'm a senior user researcher based in San Francisco. I love being creative and spending time outdoors.</p>
         </div>
 
@@ -1268,7 +1239,7 @@
 
     <div class="intro-text">
       <h2 class="intro-title">I'm a Senior UX Researcher at Apple.</h2>
-      <p class="intro-sub" style="font-weight: 600; color: #555552;">
+      <p class="intro-sub intro-sub--emphasis">
         These projects are personal work that reflect how I think and create outside of Apple.
       </p>
       <p class="intro-sub">
@@ -1278,9 +1249,8 @@
 
     <div class="page-bottom">
       <div class="card-grid">
-        <a class="nav-card nav-card--image is-project" href="#" data-page="ai" style="background: #fff;">
-          <img class="nav-card-img" src="images/TreeID.png" alt="TreeID app icon — a tree illustrated in dots"
-               style="object-fit: contain; object-position: center center;"
+        <a class="nav-card nav-card--image is-project nav-card--logo" href="#" data-page="ai">
+          <img class="nav-card-img nav-card-img--logo" src="images/TreeID.png" alt="TreeID app icon — a tree illustrated in dots"
                onerror="this.parentElement.classList.remove('nav-card--image')">
           <div class="nav-card-footer nav-card-footer--detailed">
             <div class="nav-card-footer-row">
@@ -1328,7 +1298,6 @@
     <div class="page-top">
       <div class="circle-photo is-project">
         <img src="images/light_design/final.png" alt="Lamp with a wood base and translucent porcelain shade"
-             style="object-position: center center;"
              onerror="this.parentElement.classList.add('empty'); this.remove()">
       </div>
       <div class="intro-text">
@@ -1379,8 +1348,8 @@
             <h3 class="process-row-title">Develop a Plan</h3>
           </div>
           <div class="process-row-body">
-            <div class="process-row-img" style="aspect-ratio: auto; height: auto;">
-              <img src="images/light_design/plan.jpeg" alt="Develop a plan" style="height: auto; object-fit: unset;">
+            <div class="process-row-img process-row-img--natural">
+              <img src="images/light_design/plan.jpeg" alt="Develop a plan">
             </div>
             <div class="process-row-text">
               <p class="process-row-desc">With the concept proven, I sketched out a plan. I needed to figure out how to fit the lighting component inside the piece, how the parts would connect, and how to make it sit flat on a surface. The goal was a fully standalone lamp — one self-contained object you could plug in and use.</p>
@@ -1449,7 +1418,7 @@
           <div class="process-row-body">
             <div class="process-row-img-pair">
               <div class="process-row-img">
-                <img src="images/light_design/prototype3.jpeg" alt="Lamp with a wood base and translucent porcelain shade">
+                <img src="images/light_design/final.png" alt="Lamp with a wood base and translucent porcelain shade">
               </div>
               <div class="process-row-img">
                 <img src="images/light_design/prototype3_inside.jpeg" alt="Wooden base carved out to fit the ceramic lampshade, with lighting fixture attached inside">
@@ -1482,7 +1451,6 @@
     <div class="page-top">
       <div class="circle-photo is-project">
         <img src="images/conversations_w_women.JPG" alt="Conversations with Women — zine cover art"
-             style="object-position: center center;"
              onerror="this.parentElement.classList.add('empty'); this.remove()">
       </div>
       <div class="intro-text">
@@ -1548,7 +1516,7 @@
 
       <div class="coming-soon">
         <div>
-          <p class="project-section-label" style="margin-bottom: 6px;">The zine</p>
+          <p class="project-section-label project-section-label--tight">The zine</p>
           <p class="coming-soon-title">Full interviews coming soon.</p>
         </div>
         <span class="coming-soon-tag">Coming soon</span>
@@ -1567,7 +1535,6 @@
     <div class="page-top">
       <div class="circle-photo is-project">
         <img src="images/TreeID.png" alt="TreeID app icon — a tree illustrated in dots"
-             style="object-position: center center;"
              onerror="this.parentElement.classList.add('empty'); this.remove()">
       </div>
       <div class="intro-text">
@@ -1580,9 +1547,9 @@
 
     <div class="project-body">
 
-      <div style="display: flex; flex-direction: column; gap: 48px;">
+      <div class="project-stack-lg">
 
-        <div class="project-cols" style="align-items: start;">
+        <div class="project-cols project-cols--start">
 
           <div>
             <p class="project-section-label">The idea</p>
@@ -1598,13 +1565,12 @@
           </div>
 
           <div>
-            <img src="images/ai_feedback_loop.png" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design"
-                 style="width: 80%; height: auto; display: block; margin: 0 auto;">
+            <img class="ai-loop-diagram" src="images/ai_feedback_loop.png" alt="Diagram of an iterative product loop cycling through usability testing, user feedback, development, and new design">
           </div>
 
         </div>
 
-        <div class="project-cols" style="align-items: start;">
+        <div class="project-cols project-cols--start">
 
           <div>
             <p class="project-section-label">The Result</p>
@@ -1626,7 +1592,7 @@
               <li>It didn't weigh findings by frequency; one user's feedback carried the same weight as three.</li>
               <li>Users could complete every task, but this experiment shows usable and well-designed aren't necessarily the same thing.</li>
             </ul>
-            <p class="project-text" style="margin-top: 16px;">I was impressed with the output. I think one of the main limiting factors was the lightweight prompts I used. With more prompt structure around how to weigh and incorporate findings, the loop could get to a usable point faster and more reliably.</p>
+            <p class="project-text project-text--spaced">I was impressed with the output. I think one of the main limiting factors was the lightweight prompts I used. With more prompt structure around how to weigh and incorporate findings, the loop could get to a usable point faster and more reliably.</p>
           </div>
 
         </div>
@@ -1772,7 +1738,7 @@
       <div class="about-col-left">
         <h2 class="intro-title">I love to build beautiful, functional things.</h2>
         <p class="intro-sub">I'm a UX researcher and designer with an engineering background.</p>
-        <div class="bio-text" style="margin-top: var(--gap-lg);">
+        <div class="bio-text bio-text--inset">
           <p><strong>At Northwestern, I studied Computer Science and Design.</strong><br>Within the CS curriculum, I focused on Human Computer Interaction and Machine Learning. I was a TA for 5 quarters across different CS classes. This taught me how to break down complex topics and explain them clearly, and gave me my first real experience in mentorship and building relationships through teaching.</p>
           <p><strong>I started at Apple in a cross-functional rotational program.</strong><br>Across my rotations, I worked in product management, front-end development, and user research, which gave me a strong foundation for working across disciplines. From there, I grew into increasingly scoped research roles, leading research on Apple TV+ before building Apple Legal's research practice from the ground up.</p>
           <p><strong>Outside of work, you'll likely find me at my ceramics studio.</strong><br>I also love backpacking and rock climbing in California's mountains.</p>
@@ -1803,12 +1769,12 @@
 
 
   <!-- ── CONTACT ── -->
-  <section class="page page--full" id="page-contact" style="display: flex; flex-direction: column; gap: var(--gap-2xl); overflow: hidden;">
+  <section class="page page--full contact-page" id="page-contact">
 
     <!-- Content: top -->
-    <div style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--gap-lg); padding-top: 48px;">
+    <div class="contact-intro">
       <h2 class="intro-title">Let's connect!</h2>
-      <p style="font-size: var(--fs-base); font-weight: 300; color: var(--text-muted); line-height: 1.7; margin: 0; max-width: 420px;">I'm happy to connect, whether you're a researcher, designer, recruiter, or just curious. I'm always interested in learning about experiences across different companies and teams. Feel free to reach out!</p>
+      <p class="contact-intro-text">I'm happy to connect, whether you're a researcher, designer, recruiter, or just curious. I'm always interested in learning about experiences across different companies and teams. Feel free to reach out!</p>
       <div class="contact-buttons">
         <a href="mailto:cgracealexander@icloud.com" class="contact-btn" aria-label="Send email">
           Email ↗
@@ -1823,28 +1789,14 @@
     </div>
 
     <!-- Bridge: static image, then interactive wave canvas below it -->
-    <div id="bridge-container" style="margin: 0 calc(-1 * var(--page-pad-x)); width: calc(100% + 2 * var(--page-pad-x)); overflow: hidden;">
-      <img src="images/ggb_background.png" alt="Golden Gate Bridge illustrated in dots" aria-hidden="true"
-           style="display: block; width: 100%; height: auto;">
-      <canvas id="bridgeCanvas" aria-hidden="true"
-              style="display: block; width: 100%; pointer-events: none;"></canvas>
+    <div id="bridge-container" class="bridge-container">
+      <img src="images/ggb_background.png" alt="Golden Gate Bridge illustrated in dots" aria-hidden="true">
+      <canvas id="bridgeCanvas" aria-hidden="true"></canvas>
     </div>
 
   </section>
 
 </main>
-
-
-<!-- ═══════════════════════════════════════
-     LIGHTBOX (ceramics gallery)
-═══════════════════════════════════════ -->
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Ceramics photo viewer">
-  <span class="lightbox-counter" id="lightbox-counter" aria-live="polite"></span>
-  <img class="lightbox-img" id="lightbox-img" alt="">
-  <button type="button" class="lightbox-control lightbox-prev" id="lightbox-prev" aria-label="Previous photo">‹</button>
-  <button type="button" class="lightbox-control lightbox-next" id="lightbox-next" aria-label="Next photo">›</button>
-  <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Close photo viewer">×</button>
-</div>
 
 
 <!-- ═══════════════════════════════════════
@@ -2204,112 +2156,6 @@
   })();
 
 
-  /* ─────────────────────────────────────────
-     CERAMICS GALLERY
-     To add/remove photos: update this array and move the file
-     into the ceramics_gallery/ folder.
-  ───────────────────────────────────────── */
-  (function buildGallery() {
-    var photos = [
-      "ChatGPT Image May 4, 2026 at 10_46_21 AM.png",
-      "DSCF4205.JPG","DSCF4263.JPG","DSCF4264.JPG","DSCF4269.JPG",
-      "DSCF4280.JPG","DSCF4282.JPG","DSCF4309.JPG","DSCF4315.JPG",
-      "DSCF4316.JPG","DSCF4320.JPG","DSCF4323.JPG","DSCF4325.JPG",
-      "DSCF4327.JPG","DSCF4330.JPG","DSCF4336.JPG","DSCF4342.JPG",
-      "DSCF4344.JPG","DSCF4364.JPG","DSCF4377.JPG","DSCF4382.JPG",
-      "DSCF4386.JPG","DSCF4402.JPG","DSC_0213.JPG","DSC_0254.JPG",
-      "DSC_0290.JPG","DSC_0301 (1).JPG","DSC_0301.JPG","DSC_0303.JPG",
-      "DSC_0314.JPG","DSC_0318.JPG","DSC_0325.JPG","DSC_0329.JPG",
-      "DSC_0334.JPG","DSC_0352.JPG","DSC_0355.JPG","DSC_0369.JPG",
-      "DSC_0375.JPG","DSC_0383.JPG","DSC_0415.JPG","IMG_4105.jpeg",
-      "P1330469.JPG","tempImage98ozlJ.jpeg","tempImageTeaZXG.jpeg",
-      "tempImagehRexmk.jpeg","tempImagetDyhCP.jpeg"
-    ];
-
-    var grid = document.getElementById('ceramicsGallery');
-
-    photos.forEach(function (filename, i) {
-      var cell = document.createElement('button');
-      cell.className = 'gallery-cell';
-      cell.type = 'button';
-      cell.setAttribute('aria-label', 'View ceramic piece ' + (i + 1) + ' of ' + photos.length);
-      cell.dataset.index = i;
-
-      var img = document.createElement('img');
-      img.src = 'images/ceramics_gallery/' + encodeURIComponent(filename);
-      img.alt = '';
-      img.loading = 'lazy';
-      img.decoding = 'async';
-      img.addEventListener('error', function () { cell.remove(); });
-
-      cell.appendChild(img);
-      grid.appendChild(cell);
-    });
-  })();
-
-
-  /* ─────────────────────────────────────────
-     CERAMICS LIGHTBOX
-     Click a tile → fullscreen viewer with prev/next/close.
-     Keyboard: ← → to navigate, Esc to close.
-  ───────────────────────────────────────── */
-  (function lightbox() {
-    var lb        = document.getElementById('lightbox');
-    var lbImg     = document.getElementById('lightbox-img');
-    var lbCounter = document.getElementById('lightbox-counter');
-    var prev      = document.getElementById('lightbox-prev');
-    var next      = document.getElementById('lightbox-next');
-    var closeBtn  = document.getElementById('lightbox-close');
-    if (!lb) return;
-
-    var cells = document.querySelectorAll('#ceramicsGallery .gallery-cell');
-    if (!cells.length) return;
-
-    var current = 0;
-    var lastFocus = null;
-
-    function show() {
-      var img = cells[current].querySelector('img');
-      lbImg.src = img.src;
-      lbCounter.textContent = (current + 1) + ' of ' + cells.length;
-    }
-    function open(i) {
-      current = i;
-      lastFocus = document.activeElement;
-      show();
-      lb.classList.add('active');
-      document.body.style.overflow = 'hidden';
-      closeBtn.focus();
-    }
-    function go(delta) {
-      current = (current + delta + cells.length) % cells.length;
-      show();
-    }
-    function dismiss() {
-      lb.classList.remove('active');
-      document.body.style.overflow = '';
-      if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
-    }
-
-    cells.forEach(function (cell, i) {
-      cell.addEventListener('click', function () { open(i); });
-    });
-    prev.addEventListener('click', function () { go(-1); });
-    next.addEventListener('click', function () { go(1); });
-    closeBtn.addEventListener('click', dismiss);
-    lb.addEventListener('click', function (e) {
-      if (e.target === lb) dismiss();
-    });
-    document.addEventListener('keydown', function (e) {
-      if (!lb.classList.contains('active')) return;
-      if (e.key === 'Escape') dismiss();
-      else if (e.key === 'ArrowRight') go(1);
-      else if (e.key === 'ArrowLeft')  go(-1);
-    });
-  })();
-
-
-
 })();
 </script>
 
@@ -2473,7 +2319,6 @@ function makeGraceAnim(graceCanvas) {
 }
 
 makeGraceAnim(document.getElementById('graceCanvas'));
-makeGraceAnim(document.getElementById('graceCanvas2'));
 
 /* ─────────────────────────────────────────
    GOLDEN GATE BRIDGE — INTERACTIVE WATER DOTS
