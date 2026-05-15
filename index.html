@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Caroline Grace Alexander — Senior UX Researcher</title>
+  <title>Caroline Grace Alexander — Senior UX Researcher at Apple</title>
   <meta name="description" content="Caroline Grace Alexander is a senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
   <meta name="author" content="Caroline Grace Alexander">
   <link rel="canonical" href="https://cgracealexander.com/">
@@ -13,12 +13,12 @@
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Caroline Grace Alexander — Senior UX Researcher">
+  <meta property="og:title" content="Caroline Grace Alexander — Senior UX Researcher at Apple">
   <meta property="og:description" content="Senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
   <meta property="og:image" content="https://cgracealexander.com/images/og-card.png">
   <meta property="og:url" content="https://cgracealexander.com/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Caroline Grace Alexander — Senior UX Researcher">
+  <meta name="twitter:title" content="Caroline Grace Alexander — Senior UX Researcher at Apple">
   <meta name="twitter:description" content="Senior UX researcher in San Francisco. Mixed-methods research, ceramics, and design experiments.">
   <meta name="twitter:image" content="https://cgracealexander.com/images/og-card.png">
 
@@ -74,8 +74,7 @@
       outline-offset: 2px;
       border-radius: 2px;
     }
-    .nav-card:focus-visible,
-    .home-about-card:focus-visible { outline-offset: 4px; }
+    .nav-card:focus-visible { outline-offset: 4px; }
     #cgaCanvas:focus-visible { outline-offset: 6px; }
 
     /* ─── Visually hidden (screen-reader only) ─── */
@@ -119,7 +118,6 @@
 
       /* Layout */
       --header-h:   48px;
-      --footer-h:   32px;
       --page-pad-y: 36px;
       --page-pad-x: 60px;
 
@@ -381,7 +379,7 @@
       color: #555552;
     }
 
-    /* About-page bio: same width as intro-sub but body-text styling */
+    /* About-page bio: body-text styling, comfortable reading width */
     .bio-text {
       display: flex;
       flex-direction: column;
@@ -389,39 +387,17 @@
       font-size: var(--fs-base);
       font-weight: 350;
       color: var(--text);
-      line-height: 1.8;
-      max-width: 560px;
+      line-height: 2.0;
+      max-width: 820px;
     }
-    .bio-text--inset { margin-top: var(--gap-lg); }
     .bio-text strong,
     .process-row-meta strong,
     .project-text strong {
       color: #555552;
       font-weight: 600;
     }
-    .bio-row {
-      display: flex;
-      gap: 16px;
-      align-items: flex-start;
-    }
-    .bio-icon {
-      flex-shrink: 0;
-      margin-top: 3px;
-      color: var(--text-muted);
-    }
-
-
     /* ─── Bottom section: cards / gallery ─── */
     .page-bottom { flex-shrink: 0; }
-
-    .col-label {
-      font-size: var(--fs-xs);
-      font-weight: 400;
-      letter-spacing: var(--ls-label);
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: var(--gap-md);
-    }
 
 
     /* ─── Portfolio card with description ─── */
@@ -585,15 +561,13 @@
     .project-text {
       font-size: var(--fs-base);
       font-weight: 350;
-      line-height: 1.85;
+      line-height: 2.0;
       color: var(--text);
       max-width: 640px;
     }
     .project-text + .project-text { margin-top: 20px; }
     .project-text--spaced { margin-top: 16px; }
-    .takeaway-wide .project-text { max-width: none; }
     .page--full { max-width: none; }
-    .project-cols--about { grid-template-columns: 2fr auto; }
     .project-cols--start { align-items: start; }
     .project-section-label--tight { margin-bottom: 6px; }
     .project-stack-lg {
@@ -641,7 +615,6 @@
       font-weight: 350;
       line-height: 1.7;
     }
-    .numbered-list-text strong { font-weight: 400; }
 
 
     /* ─── Process row (Lighting Design steps) ─── */
@@ -712,7 +685,7 @@
       font-size: var(--fs-base);
       font-weight: 350;
       color: var(--text);
-      line-height: 1.85;
+      line-height: 2.0;
     }
     .process-row-meta-block {
       margin-top: var(--gap-xs);
@@ -729,7 +702,7 @@
       font-size: var(--fs-base);
       font-weight: 350;
       color: var(--text);
-      line-height: 1.85;
+      line-height: 2.0;
     }
     .process-bullet-list {
       margin: 0;
@@ -755,74 +728,6 @@
     }
 
 
-    /* ─── Home page: multi-section layout ─── */
-    .home-sections {
-      display: flex;
-      flex-direction: column;
-      gap: var(--gap-xl);
-    }
-    .home-section-header {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      margin-bottom: var(--gap-md);
-    }
-
-    /* ─── Home about card ─── */
-    .home-about-card {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      padding: 28px 32px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      cursor: pointer;
-      transition: border-color var(--t-fast), background 0.18s;
-    }
-    .home-about-card:hover {
-      border-color: var(--text);
-      background: var(--bg);
-    }
-    .home-about-photo {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .home-about-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center center;
-      filter: var(--filter-portrait);
-      display: block;
-    }
-    .home-about-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-    .home-about-name {
-      font-size: var(--fs-h);
-      font-weight: 400;
-    }
-    .home-about-tagline {
-      font-size: var(--fs-sm);
-      font-weight: 350;
-      color: var(--text-muted);
-    }
-    .home-about-arrow {
-      font-size: var(--fs-base);
-      color: var(--text-muted);
-      transition: transform var(--t-fast);
-    }
-    .home-about-card:hover .home-about-arrow { transform: translateX(5px); }
-
-
     /* ─── Phone screenshot pair (AI Design Experiment) ─── */
     .process-row-phones {
       display: grid;
@@ -843,26 +748,56 @@
     }
 
 
-    /* ─── About Me two-column layout ─── */
+    /* ─── About Me layout (mobile-first, responsive) ───
+       Default: stacked. Bio above, ceramics 2×2 below, centered.
+       Tablet/small desktop (1024–1399): stacks with 4-across stripe.
+       Desktop (≥1400): side-by-side, photos capped so they don't dominate.
+    */
     .about-cols {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       gap: var(--gap-2xl);
       align-items: start;
     }
-    .about-col-left { display: flex; flex-direction: column; gap: 0; }
-    .ceramics-preview-grid.ceramics-grid-2x2 { grid-template-columns: 1fr 1fr; }
-
-    @media (max-width: 768px) {
-      .about-cols { grid-template-columns: 1fr; }
-    }
+    .about-col-right { display: flex; flex-direction: column; gap: 6px; }
 
 
-    /* ─── Ceramics preview (About Me section) ─── */
+    /* ─── Ceramics preview grid ─── */
     .ceramics-preview-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--gap-sm);
+    }
+    /* Default 2×2: capped at 538px (the size where the grid would start
+       getting taller than the bio content next to it), centered */
+    .ceramics-preview-grid.ceramics-grid-2x2 {
+      grid-template-columns: 1fr 1fr;
+      max-width: 538px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    /* Phablet to small desktop (641–1399): side-by-side, photos left-aligned in column */
+    @media (min-width: 641px) and (max-width: 1399px) {
+      .about-cols {
+        grid-template-columns: 1fr 1fr;
+      }
+      .ceramics-preview-grid.ceramics-grid-2x2 {
+        margin: 0;
+      }
+    }
+    /* Desktop (≥1400): cap the whole About section so bio + photos stay
+       side-by-side without dead space between them, and the heading
+       aligns with the content below */
+    @media (min-width: 1400px) {
+      #page-about {
+        max-width: calc(820px + var(--gap-2xl) + 538px + var(--page-pad-x) * 2);
+      }
+      .about-cols {
+        grid-template-columns: 1fr 538px;
+      }
+      .ceramics-preview-grid.ceramics-grid-2x2 {
+        margin: 0;
+      }
     }
     .ceramics-preview-cell {
       aspect-ratio: 1;
@@ -964,40 +899,6 @@
       background: var(--text);
       color: var(--bg);
     }
-    .contact-card-link {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      text-decoration: none;
-      color: var(--text-muted);
-      transition: color var(--t-fast);
-      cursor: pointer;
-    }
-    .contact-card-link:hover { color: var(--text); }
-    .contact-card-link-text {
-      font-size: var(--fs-lg);
-      font-weight: 350;
-    }
-    .contact-card-link-arrow { font-size: var(--fs-sm); }
-
-
-    /* ─── Footer ─── */
-    footer {
-      flex-shrink: 0;
-      height: var(--footer-h);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--gap-xs);
-      background: var(--bg);
-      border-top: 1px solid var(--border);
-    }
-    .footer-text {
-      font-size: var(--fs-xs);
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
 
 
     /* ─── Tablet (769px–1024px) ─── */
@@ -1088,9 +989,6 @@
         grid-template-columns: 1fr;
         gap: var(--gap-2xl);
       }
-      .project-cols--about {
-        grid-template-columns: 1fr;
-      }
 
       .process-row {
         padding: 36px 0;
@@ -1111,11 +1009,6 @@
       }
 
       .contact-intro { padding-top: var(--gap-lg); }
-
-      .contact-card {
-        min-width: 0;
-        width: 100%;
-      }
 
       /* Bridge: shorter on mobile */
       #bridge-container { height: 200px; }
@@ -1152,12 +1045,9 @@
       }
       .skip-link,
       header,
-      footer,
       nav,
       .back-link,
       .nav-card-arrow,
-      .home-about-arrow,
-      .contact-card-link-arrow,
       #cgaCanvas { display: none !important; }
 
       /* Force every page visible so the printout includes everything */
@@ -1172,8 +1062,7 @@
         color: #555;
       }
       img { filter: none !important; max-width: 100%; height: auto; page-break-inside: avoid; }
-      .nav-card,
-      .home-about-card { border-color: #ccc; }
+      .nav-card { border-color: #ccc; }
       .process-row,
       .coming-soon { page-break-inside: avoid; }
     }
@@ -1190,7 +1079,7 @@
 <header>
   <canvas id="cgaCanvas" role="button" tabindex="0" aria-label="Home" title="Home">CGA</canvas>
   <nav aria-label="Primary">
-    <a href="#page-portfolio" class="nav-link">Portfolio</a>
+    <a href="#page-portfolio" class="nav-link">Projects</a>
     <a href="#page-about" class="nav-link">About Me</a>
     <a href="#page-contact" class="nav-link">Contact</a>
   </nav>
@@ -1222,7 +1111,7 @@
           <p class="hero-hi">Hi, I'm</p>
           <canvas id="graceCanvas" width="450" height="200" aria-hidden="true"></canvas>
           <h1 class="sr-only">Grace — Caroline Grace Alexander, Senior UX Researcher</h1>
-          <p class="hero-tagline">I'm a senior user researcher based in San Francisco. I love being creative and spending time outdoors.</p>
+          <p class="hero-tagline">I use research, collaboration, and experimentation to better understand people and build thoughtful experiences.</p>
         </div>
 
       </div>
@@ -1232,19 +1121,15 @@
   </section>
 
 
-  <!-- ── PORTFOLIO ── -->
+  <!-- ── PROJECTS ── -->
   <section class="page page--full" id="page-portfolio">
 
-    <p class="section-label">Portfolio</p>
+    <p class="section-label">Projects</p>
 
     <div class="intro-text">
       <h2 class="intro-title">I'm a Senior UX Researcher at Apple.</h2>
-      <p class="intro-sub intro-sub--emphasis">
-        These projects are personal work that reflect how I think and create outside of Apple.
-      </p>
-      <p class="intro-sub">
-        At work, I focus on mixed-methods research, with the goal of grounding product decisions in real user insight.
-      </p>
+      <p class="intro-sub intro-sub--emphasis">I'm curious about people and systems.</p>
+      <p class="intro-sub">I'm drawn to experimentation and iterative ways of working at Apple and outside of it. Here are some examples from my personal work that reflect how I think and create.</p>
     </div>
 
     <div class="page-bottom">
@@ -1293,7 +1178,7 @@
   <!-- ── DESIGN ── -->
   <section class="page page--sub" id="page-design">
 
-    <a class="back-link" href="#" data-page="portfolio">Portfolio</a>
+    <a class="back-link" href="#" data-page="portfolio">Projects</a>
 
     <div class="page-top">
       <div class="circle-photo is-project">
@@ -1313,7 +1198,7 @@
       <div>
         <p class="project-section-label">About the project</p>
         <p class="project-text">
-          I was living in an old San Francisco apartment with warm, flattering light — most of it coming through frosted glass fixtures and incandescent bulbs. I wanted to recreate that quality of light — that warm, atmospheric glow — with a ceramic light.
+          I was living in an old San Francisco apartment with warm, flattering light. Most of it came through frosted glass fixtures and incandescent bulbs. I wanted to recreate that warm, atmospheric glow with a ceramic light.
         </p>
         <p class="project-text">
           I'd heard that porcelain, thrown thin enough, can be translucent. That became the starting point: two years of making, testing, and iterating toward a ceramic light cover that glows.
@@ -1332,11 +1217,11 @@
               <img src="images/light_design/prototype0.jpeg" alt="Translucent porcelain cup placed on top of a light fixture — proof of concept">
             </div>
             <div class="process-row-text">
-              <p class="process-row-desc">The first question was whether porcelain could be thrown thin enough to let light through. I made a test piece, and it worked — the translucency was clear, and the concept held.</p>
+              <p class="process-row-desc">The first question was whether porcelain could be thrown thin enough to let light through. I made a test piece, and it worked. The translucency was clear, and the concept held.</p>
               <p class="process-row-desc">You can see here my test piece placed on top of a light fixture in my house.</p>
               <div class="process-row-meta-block">
                 <p class="process-row-meta-label">Next steps</p>
-                <p class="process-row-meta">With the concept proven, I needed to design the full lamp — how the lighting component would fit inside, how the parts would connect, and how to make it a standalone object.</p>
+                <p class="process-row-meta"><strong role="heading" aria-level="4">With the concept proven, I needed to design the full lamp.</strong> The lighting component had to fit inside, the parts had to connect, and the whole thing needed to sit flat as a standalone object.</p>
               </div>
             </div>
           </div>
@@ -1352,10 +1237,10 @@
               <img src="images/light_design/plan.jpeg" alt="Hand-drawn sketch showing the planned lamp design — base, shade, and lighting fixture placement">
             </div>
             <div class="process-row-text">
-              <p class="process-row-desc">With the concept proven, I sketched out a plan. I needed to figure out how to fit the lighting component inside the piece, how the parts would connect, and how to make it sit flat on a surface. The goal was a fully standalone lamp — one self-contained object you could plug in and use.</p>
+              <p class="process-row-desc">With the concept proven, I sketched out a plan. I needed to figure out how to fit the lighting component inside the piece, how the parts would connect, and how to make it sit flat on a surface. The goal was a fully standalone lamp, one self-contained object you could plug in and use.</p>
               <div class="process-row-meta-block">
                 <p class="process-row-meta-label">Next steps</p>
-                <p class="process-row-meta">Build it and test it — see how close the reality was to the plan.</p>
+                <p class="process-row-meta"><strong role="heading" aria-level="4">The next step was to build it and test it.</strong> I wanted to see how close the reality was to the plan.</p>
               </div>
             </div>
           </div>
@@ -1376,10 +1261,10 @@
               </div>
             </div>
             <div class="process-row-text">
-              <p class="process-row-desc">The first version got the overall look right, but had real problems. The light fixture sat separately from the rest of the piece, the cord exit felt unresolved, and the components didn't come together as one. Only about one in every five shade attempts came out properly translucent.</p>
+              <p class="process-row-desc">The first version captured the overall look, but had significant structural problems. The light fixture sat separately from the rest of the piece, the cord exit felt unresolved, and the components didn't come together as one. Only about one in every five shade attempts came out properly translucent.</p>
               <div class="process-row-meta-block">
                 <p class="process-row-meta-label">Next steps</p>
-                <p class="process-row-meta">Improve the shade success rate and find a method for making it consistently. Integrate the components so the lamp reads as one unified object.</p>
+                <p class="process-row-meta"><strong role="heading" aria-level="4">Improve the shade success rate and find a method for making it consistently.</strong> Integrate the components so the lamp reads as one unified object.</p>
               </div>
             </div>
           </div>
@@ -1401,10 +1286,10 @@
             </div>
             <div class="process-row-text">
               <p class="process-row-desc">After trying hand building, carving, and other methods, I landed on slip casting. I threw the lampshade form on the wheel, made a plaster mold from it, and used the mold to cast extremely thin porcelain shells. I also took a slip casting class to learn the technique properly.</p>
-              <p class="process-row-desc">Traditionally, slip is left in a mold for 30–40 minutes to build up the walls. For these, I pulled it at five — well outside the standard parameters of the method, but the only way to get the walls thin enough to glow.</p>
+              <p class="process-row-desc">Traditionally, slip is left in a mold for 30–40 minutes to build up the walls. For these, I pulled it at five. That's well outside the standard parameters of the method, but it was the only way to get the walls thin enough to glow.</p>
               <div class="process-row-meta-block">
                 <p class="process-row-meta-label">Next steps</p>
-                <p class="process-row-meta">Raw white porcelain looked right for the base, but getting it to fit the shade precisely was difficult. Clay shrinks about 15% during firing, and starts shrinking as soon as it begins to dry. The shade used a liquid slip clay while the base was thrown from a different porcelain, so they had different shrinkage rates and were always at different stages of dryness. Aligning the two consistently was a persistent problem.</p>
+                <p class="process-row-meta"><strong role="heading" aria-level="4">Raw white porcelain looked right for the base, but getting it to fit the shade precisely was difficult.</strong> Clay shrinks about 15% during firing, and starts shrinking as soon as it begins to dry. The shade used a liquid slip clay while the base was thrown from a different porcelain, so they had different shrinkage rates and were always at different stages of dryness. Aligning the two consistently was a persistent problem.</p>
               </div>
             </div>
           </div>
@@ -1425,12 +1310,12 @@
               </div>
             </div>
             <div class="process-row-text">
-              <p class="process-row-desc">While I'm most comfortable with the ceramic medium, it was time to try a new medium that could solve some of the issues a ceramic base introduced. I took a wood carving class, learned to use the lathe, and switched the base to wood. Wood made it straightforward to install the lamp hardware and drill a clean hole for the cord — both things that had always been messy in ceramic.</p>
-              <p class="process-row-desc">The bigger gain was fit. With a wood base, I could bring the fully fired shade to the lathe and carve the groove to match it exactly — test-fitting the shade as I went, shaving a little more until it sat properly. The shrinkage problem went away.</p>
-              <p class="process-row-desc">Slip casting for the shade, wood turning for the base — after two years of experimentation, I had a consistent, replicable method for making the light.</p>
+              <p class="process-row-desc">While I'm most comfortable with the ceramic medium, it was time to try a new medium that could solve some of the issues a ceramic base introduced. I took a wood carving class, learned to use the lathe, and switched the base to wood. Wood made it straightforward to install the lamp hardware and drill a clean hole for the cord, both of which had always been messy in ceramic.</p>
+              <p class="process-row-desc">The bigger gain was fit. With a wood base, I could bring the fully fired shade to the lathe and carve the groove to match it exactly. I test-fitted the shade as I went, shaving a little more until it sat properly. The shrinkage problem went away.</p>
+              <p class="process-row-desc">Slip casting for the shade, wood turning for the base. After two years of experimentation, I had a consistent, replicable method for making the light.</p>
               <div class="process-row-meta-block">
                 <p class="process-row-meta-label">Result</p>
-                <p class="process-row-meta">A standalone, plug-in lamp — one object, consistent to make, and the warm glow I'd set out to recreate.</p>
+                <p class="process-row-meta"><strong role="heading" aria-level="4">I had a standalone, plug-in lamp.</strong> The lamp could be made consistently with the warm glow I'd set out to recreate.</p>
               </div>
             </div>
           </div>
@@ -1446,7 +1331,7 @@
   <!-- ── INTERVIEWS ── -->
   <section class="page page--sub" id="page-interviews">
 
-    <a class="back-link" href="#" data-page="portfolio">Portfolio</a>
+    <a class="back-link" href="#" data-page="portfolio">Projects</a>
 
     <div class="page-top">
       <div class="circle-photo is-project">
@@ -1471,7 +1356,7 @@
             I've always been curious about what other people's lives actually feel like from the inside.
           </p>
           <p class="project-text">
-            This project is a research pilot designed to surface those feelings. The goal is twofold: to help people feel seen in their everyday emotional experience, and to build curiosity about the lives of others.
+            This project is a research pilot designed to surface those feelings, help people feel seen in their everyday emotional experiences, and build curiosity about the lives of others.
           </p>
           <p class="project-text">
             Designing the five questions took real care. Each one had to be open enough that participants could take it anywhere — no specific emotions named, no examples that might anchor their thinking. I wanted each person to describe their own experience in their own words, without being steered toward what I expected to hear.
@@ -1530,7 +1415,7 @@
   <!-- ── AI FEEDBACK LOOP ── -->
   <section class="page page--sub" id="page-ai">
 
-    <a class="back-link" href="#" data-page="portfolio">Portfolio</a>
+    <a class="back-link" href="#" data-page="portfolio">Projects</a>
 
     <div class="page-top">
       <div class="circle-photo is-project">
@@ -1557,7 +1442,7 @@
               This project explores what happens when AI and usability testing are connected in a closed loop with no designer or developer in the middle. The premise is simple: an AI generates a prototype, real users test it, and their feedback goes straight back into the AI to generate the next version.
             </p>
             <p class="project-text">
-              Tools like UserTesting.com already let you connect to users on demand. In a fully realized version of this loop, a design could go from prototype to tested to revised without a human decision point in between. And since most usability testing doesn't require specialized expertise, this could be an inexpensive way to iterate.
+              Tools like UserTesting.com already let you connect to users on demand. In a fully realized version of this loop, a design could go from prototype to tested to revised without a human decision point in between. Because usability testing can be run quickly and repeatedly, this kind of loop could dramatically accelerate iteration.
             </p>
             <p class="project-text">
               I believe humans should be in the loop with AI. This project is a deliberate experiment to see what happens when they're not.
@@ -1573,7 +1458,7 @@
         <div class="project-cols project-cols--start">
 
           <div>
-            <p class="project-section-label">The Result</p>
+            <p class="project-section-label">The result</p>
             <div class="process-row-phones">
               <div class="process-row-phone">
                 <img src="images/ai_feedback_loop/final-home.png" alt="App home screen with a tree photo and two action buttons: Take a Photo and Choose from Library">
@@ -1586,7 +1471,7 @@
 
           <div>
             <p class="project-section-label">My takeaway</p>
-            <p class="project-text"><strong>It took more iterations than I expected, but the loop produced a working app.</strong></p>
+            <p class="project-text"><strong role="heading" aria-level="3">It took more iterations than I expected, but the loop produced a working app.</strong></p>
             <ul class="process-bullet-list">
               <li>Claude optimized for the feedback it received rather than design best practices. It gave users what they asked for, not what a skilled designer would know to do from the start.</li>
               <li>It didn't weigh findings by frequency; one user's feedback carried the same weight as three.</li>
@@ -1600,7 +1485,7 @@
       </div>
 
       <div>
-        <div class="process-rows">
+        <div class="process-rows" style="border-top: 1px solid var(--border);">
 
           <!-- Iteration 1 -->
           <div class="process-row">
@@ -1621,7 +1506,7 @@
                 <div>
                   <p class="process-row-meta-label">Research findings</p>
                   <ul class="process-bullet-list">
-                    <li>Core flow worked — users could identify a tree without friction</li>
+                    <li>Core flow worked: users could identify a tree without friction</li>
                     <li>"?" placeholder icon flagged as unfinished by all users</li>
                     <li>Results page didn't afford scrolling — one user never found the fun fact or CTA</li>
                     <li>Consistent ask for more depth: reference photos, tappable match cards, a habitat map</li>
@@ -1637,7 +1522,7 @@
                   </ul>
                 </div>
                 <div class="process-row-meta-block">
-                  <p class="process-row-meta"><strong>Three of the four recommendations were each raised by only one user — not enough to be a reliable finding.</strong><br>The AI also missed the "?" icon entirely, despite all three users raising it independently.</p>
+                  <p class="process-row-meta"><strong role="heading" aria-level="4">Three of the four recommendations were each raised by only one user, not enough to be a reliable finding.</strong><br>The AI also missed the "?" icon entirely, despite all three users raising it independently.</p>
                 </div>
               </div>
             </div>
@@ -1669,14 +1554,14 @@
                 <div class="process-row-meta-block">
                   <p class="process-row-meta-label">AI's recommendations</p>
                   <ul class="process-bullet-list">
-                    <li>Redesign the landing page with a centered hero structure — app name and tagline at the top, illustration in the middle, buttons anchored at the bottom</li>
+                    <li>Redesign the landing page with a centered hero structure: app name and tagline at the top, illustration in the middle, buttons anchored at the bottom</li>
                     <li>Replace the single CTA with two explicit buttons ("Take Photo" / "Choose from Library"), eliminating the dialog entirely</li>
                     <li>Add reference photos to expanded match cards</li>
                     <li>Remove confusing scroll-hint chevrons</li>
                   </ul>
                 </div>
                 <div class="process-row-meta-block">
-                  <p class="process-row-meta"><strong>Removing duplicate text and prioritizing information visually were changes in the right direction.</strong><br>But the AI was still overgeneralizing — several recommendations came from two users rather than three. The threshold for what counted as a "finding" was still low.</p>
+                  <p class="process-row-meta"><strong role="heading" aria-level="4">Removing duplicate text and prioritizing information visually were changes in the right direction.</strong><br>But the AI was still overgeneralizing: several recommendations came from two users rather than three. The threshold for what counted as a "finding" was still low.</p>
                 </div>
               </div>
             </div>
@@ -1701,7 +1586,7 @@
                 <div>
                   <p class="process-row-meta-label">Research findings</p>
                   <ul class="process-bullet-list">
-                    <li>Identify flow and results screen stopped drawing complaints — a meaningful improvement from round one</li>
+                    <li>Identify flow and results screen stopped drawing complaints, a meaningful improvement from round one</li>
                     <li>One issue raised by all three users: a black "?" box on top of the green circle (tree emoji not rendering in the iOS simulator)</li>
                   </ul>
                 </div>
@@ -1713,7 +1598,7 @@
                   </ul>
                 </div>
                 <div class="process-row-meta-block">
-                  <p class="process-row-meta"><strong>The app was usable, but it still hadn't solved for the icon issue that was mentioned every round of testing.</strong><br>In this case, AI was overgeneralizing UI changes from single data points. The icon was flagged every round, yet never prioritized. The loop may work, but having an initial design pass could save a lot of iterations. I incorporated these recommendations to get the result shown above.</p>
+                  <p class="process-row-meta"><strong role="heading" aria-level="4">The app was usable, but it still hadn't solved for the icon issue that was mentioned every round of testing.</strong><br>In this case, AI was overgeneralizing UI changes from single data points. The icon was flagged every round, yet never prioritized. The loop may work, but having an initial design pass could save a lot of iterations. I incorporated these recommendations to get the result shown above.</p>
                 </div>
               </div>
             </div>
@@ -1727,40 +1612,43 @@
   </section>
 
 
-  <!-- ── ABOUT ME ── -->
+  <!-- ── ABOUT ME (merged: About + Work) ── -->
   <section class="page page--full" id="page-about">
 
     <p class="section-label">About Me</p>
 
+    <div class="intro-text">
+      <h2 class="intro-title">I'm a curious maker and methodical thinker.</h2>
+      <p class="intro-sub">
+        I take a mixed-methods approach to understanding problems fully. I strive to build beautiful, functional things.
+      </p>
+    </div>
+
     <div class="about-cols">
 
-      <!-- Left: bio -->
-      <div class="about-col-left">
-        <h2 class="intro-title">I love to build beautiful, functional things.</h2>
-        <p class="intro-sub">I'm a UX researcher and designer with an engineering background.</p>
-        <div class="bio-text bio-text--inset">
-          <p><strong>At Northwestern, I studied Computer Science and Design.</strong><br>Within the CS curriculum, I focused on Human Computer Interaction and Machine Learning. I was a TA for 5 quarters across different CS classes. This taught me how to break down complex topics and explain them clearly, and gave me my first real experience in mentorship and building relationships through teaching.</p>
-          <p><strong>I started at Apple in a cross-functional rotational program.</strong><br>Across my rotations, I worked in product management, front-end development, and user research, which gave me a strong foundation for working across disciplines. From there, I grew into increasingly scoped research roles, leading research on Apple TV+ before building Apple Legal's research practice from the ground up.</p>
-          <p><strong>Outside of work, you'll likely find me at my ceramics studio.</strong><br>I also love backpacking and rock climbing in California's mountains.</p>
-        </div>
+      <!-- Left: bio prose -->
+      <div class="bio-text">
+          <p><strong role="heading" aria-level="3">I focus on answering the right research questions and helping teams make confident decisions.</strong><br>With my technical background, I'm uniquely positioned to work and collaborate cross-functionally. I'm currently experimenting with AI-assisted workflows for quant analysis, synthesis, note-taking, and prototyping. I help cross-functional teams focus on real user needs and translate research findings into product direction, roadmap priorities, and strategic decisions.</p>
+          <p><strong role="heading" aria-level="3">As I've grown in my role, I've taken on more teaching and mentorship.</strong><br>I care deeply about creating collaborative environments where people feel supported, challenged, and able to contribute meaningfully. I've recruited and mentored 7+ teammates from Apple rotational programs, teaching them to plan, run, and present research independently.</p>
+          <p><strong role="heading" aria-level="3">Outside of work, you'll likely find me at my ceramics studio.</strong><br>I also love backpacking and rock climbing in California's mountains.</p>
       </div>
 
-      <!-- Right: 2×2 ceramics grid -->
+      <!-- Right: ceramics 2×2 preview grid -->
       <div class="about-col-right">
-        <div class="ceramics-preview-grid ceramics-grid-2x2">
-          <div class="ceramics-preview-cell">
-            <img src="images/ceramics1.JPG" alt="Grace Alexander throwing a pot on the wheel" loading="lazy">
-          </div>
-          <div class="ceramics-preview-cell">
-            <img src="images/ceramics2.JPG" alt="Handmade ceramic teapot and mug set" loading="lazy">
-          </div>
-          <div class="ceramics-preview-cell">
-            <img src="images/ceramics3.JPG" alt="Handmade ceramic citrus juicer" loading="lazy">
-          </div>
-          <div class="ceramics-preview-cell">
-            <img src="images/ceramics4.JPG" alt="Handmade ceramic plant pot with leafy plant" loading="lazy">
-          </div>
+      <div class="ceramics-preview-grid ceramics-grid-2x2">
+        <div class="ceramics-preview-cell">
+          <img src="images/ceramics1.jpg" alt="Grace Alexander throwing a pot on the wheel" loading="lazy">
         </div>
+        <div class="ceramics-preview-cell">
+          <img src="images/ceramics2.jpg" alt="Handmade ceramic teapot and mug set" loading="lazy">
+        </div>
+        <div class="ceramics-preview-cell">
+          <img src="images/ceramics3.jpg" alt="Handmade ceramic citrus juicer" loading="lazy">
+        </div>
+        <div class="ceramics-preview-cell">
+          <img src="images/ceramics4.jpg" alt="Handmade ceramic plant pot with leafy plant" loading="lazy">
+        </div>
+      </div>
       </div>
 
     </div>
@@ -1774,7 +1662,7 @@
     <!-- Content: top -->
     <div class="contact-intro">
       <h2 class="intro-title">Let's connect!</h2>
-      <p class="contact-intro-text">If you're hiring for research, want to compare notes on mixed-methods work, or just want to say hi — I'd love to hear from you.</p>
+      <p class="contact-intro-text">I'm based in San Francisco. If you're hiring for research, want to compare notes on mixed-methods work, or just want to say hi — I'd love to hear from you.</p>
       <div class="contact-buttons">
         <a href="mailto:cgracealexander@icloud.com" class="contact-btn" aria-label="Send email">
           Email ↗
@@ -1994,7 +1882,7 @@
 
   /* ─────────────────────────────────────────
      PAGE NAVIGATION (scroll-based)
-     Main sections (home/portfolio/ceramics/about) are always
+     Main sections (home/portfolio/about/contact) are always
      visible and scroll into view. Detail pages (design/interviews/ai)
      are toggled as overlays when a project card is clicked.
   ───────────────────────────────────────── */
@@ -2150,6 +2038,12 @@
     if (SUB_PAGES.indexOf(subId) !== -1) {
       openDetail(subId);
     } else {
+      /* Legacy #page-work links land on the merged About page */
+      if (hash === 'page-work' || hash === 'work') {
+        var aboutEl = document.getElementById('page-about');
+        if (aboutEl) aboutEl.scrollIntoView({ behavior: 'instant' });
+        return;
+      }
       var el = document.getElementById(hash) || document.getElementById('page-' + hash);
       if (el) el.scrollIntoView({ behavior: 'instant' });
     }
